@@ -1,9 +1,9 @@
 package dev.vladimir.cfecodemodule.operators.binary;
 
-import dev.vladimir.cfecodemodule.operators.PrimitiveOperator;
+import dev.vladimir.cfecodemodule.operators.PrimitiveIntegerOperator;
 import dev.vladimir.cfecodemodule.tokens.Token;
 
-public class IntegerMinusOperator extends PrimitiveOperator<Integer> {
+public class IntegerMinusOperator extends PrimitiveIntegerOperator {
     @Override
     public Integer operate(Token... tokens) {
         int firstOperand = Integer.parseInt(tokens[0].getValue());

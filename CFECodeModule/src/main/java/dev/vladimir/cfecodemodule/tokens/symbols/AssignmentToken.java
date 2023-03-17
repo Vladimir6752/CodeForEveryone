@@ -1,4 +1,4 @@
-package dev.vladimir.cfecodemodule.tokens.primitiveoperators;
+package dev.vladimir.cfecodemodule.tokens.symbols;
 
 import dev.vladimir.cfecodemodule.tokens.Token;
 

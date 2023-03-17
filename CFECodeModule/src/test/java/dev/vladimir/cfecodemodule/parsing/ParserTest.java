@@ -2,7 +2,7 @@ package dev.vladimir.cfecodemodule.parsing;
 
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
-import dev.vladimir.cfecodemodule.tokens.primitiveoperators.AssignmentToken;
+import dev.vladimir.cfecodemodule.tokens.symbols.AssignmentToken;
 import dev.vladimir.cfecodemodule.tokens.primitiveoperators.PlusOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitivetypes.IntegerTypeToken;
 import dev.vladimir.cfecodemodule.tokens.primitivevalues.IntegerValueToken;
@@ -110,6 +110,74 @@ class ParserTest {
     }
 
     @Test
+    void creatingVariableWithValue_throw_IllegalStateException_if_variable_is_exist() {
+        CommonScope commonScope = new CommonScope();
+
+        Variable expectedVariable = new Variable("someName", "Число", 20);
+
+        commonScope.getVariablesScope().setVariableInScope(expectedVariable);
+        commonScope.getVariablesScope().setVariableInScope(
+                new Variable("someExistingVariable", "Число", 10)
+        );
+        List<List<? extends Token>> inputTokenizeLines = List.of(
+                List.of(
+                        new IntegerTypeToken(),
+                        new VariableNameToken(expectedVariable.name()),
+                        new AssignmentToken(),
+                        new IntegerValueToken(10),
+                        new PlusOperatorToken(),
+                        new VariableNameToken("someExistingVariable"),
+                        new SemicolonToken()
+                )
+        );
+
+        Parser parser = new Parser(inputTokenizeLines, commonScope);
+
+        IllegalStateException illegalStateException = assertThrows(
+                IllegalStateException.class,
+                parser::beginParse
+        );
+
+        assertEquals(
+                "Variable with name: 'someName' already exists in the current scope",
+                illegalStateException.getMessage()
+        );
+
+    }
+
+    @Test
+    void creatingVariableWithoutValue_throw_IllegalStateException_if_variable_is_exist() {
+        CommonScope commonScope = new CommonScope();
+
+        Variable expectedVariable = new Variable("someName", "Число", 20);
+
+        commonScope.getVariablesScope().setVariableInScope(expectedVariable);
+        commonScope.getVariablesScope().setVariableInScope(
+                new Variable("someExistingVariable", "Число", 10)
+        );
+        List<List<? extends Token>> inputTokenizeLines = List.of(
+                List.of(
+                        new IntegerTypeToken(),
+                        new VariableNameToken(expectedVariable.name()),
+                        new SemicolonToken()
+                )
+        );
+
+        Parser parser = new Parser(inputTokenizeLines, commonScope);
+
+        IllegalStateException illegalStateException = assertThrows(
+                IllegalStateException.class,
+                parser::beginParse
+        );
+
+        assertEquals(
+                "Variable with name: 'someName' already exists in the current scope",
+                illegalStateException.getMessage()
+        );
+
+    }
+
+    @Test
     void setting_variable_with_primitive_value() {
         CommonScope commonScope = new CommonScope();
 
@@ -182,6 +250,31 @@ class ParserTest {
         assertEquals(
                 new Variable("someName", "Число", 25),
                 actualVariable
+        );
+    }
+
+    @Test
+    void settingVariableValue_throwIllegalStateException_if_variable_is_null() {
+        List<List<? extends Token>> inputTokenizeLines = List.of(
+                // someName = 10 ;
+                List.of(
+                        new VariableNameToken("someNotExistVariableName"),
+                        new AssignmentToken(),
+                        new IntegerValueToken(10),
+                        new SemicolonToken()
+                )
+        );
+
+        Parser parser = new Parser(inputTokenizeLines, new CommonScope());
+
+        IllegalStateException illegalStateException = assertThrows(
+                IllegalStateException.class,
+                parser::beginParse
+        );
+
+        assertEquals(
+                "Variable with name: 'someNotExistVariableName' was not found in the current scope",
+                illegalStateException.getMessage()
         );
     }
 

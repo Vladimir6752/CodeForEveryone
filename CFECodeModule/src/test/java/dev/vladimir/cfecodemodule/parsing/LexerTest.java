@@ -2,13 +2,13 @@ package dev.vladimir.cfecodemodule.parsing;
 
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
-import dev.vladimir.cfecodemodule.tokens.primitiveoperators.AssignmentToken;
+import dev.vladimir.cfecodemodule.tokens.primitiveoperators.DivisionOperatorToken;
+import dev.vladimir.cfecodemodule.tokens.primitiveoperators.MultiplierOperatorToken;
+import dev.vladimir.cfecodemodule.tokens.symbols.AssignmentToken;
 import dev.vladimir.cfecodemodule.tokens.primitiveoperators.MinusOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitiveoperators.PlusOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitivetypes.IntegerTypeToken;
 import dev.vladimir.cfecodemodule.tokens.primitivevalues.IntegerValueToken;
-import dev.vladimir.cfecodemodule.tokens.symbols.CloseBracketToken;
-import dev.vladimir.cfecodemodule.tokens.symbols.OpeningBracketToken;
 import dev.vladimir.cfecodemodule.tokens.symbols.SemicolonToken;
 import org.junit.jupiter.api.Test;
 
@@ -20,33 +20,27 @@ import static org.junit.jupiter.api.Assertions.*;
 class LexerTest {
     @Test
     void analyze_return_compatible_tokens() {
-        Lexer lexer = new Lexer("Число someVariable = 20 + ( 20 - 20 ) ;");
+        Lexer lexer = new Lexer("Число someVariable = 20 + 20 - 20 / 20 * 20 ;");
 
         List<List<? extends Token>> analyzedLines = lexer.analyze();
 
-        IntegerTypeToken integerTypeToken = new IntegerTypeToken();
         VariableNameToken variableNameToken = new VariableNameToken("someVariable");
 
-        AssignmentToken assignmentToken = new AssignmentToken();
         IntegerValueToken integerValueToken = new IntegerValueToken(20);
 
-        PlusOperatorToken plusOperatorToken = new PlusOperatorToken();
-        IntegerValueToken integerValueToken1 = new IntegerValueToken(20);
-
-        MinusOperatorToken minusOperatorToken = new MinusOperatorToken();
-        IntegerValueToken integerValueToken2 = new IntegerValueToken(20);
-
         List<? extends Token> expectedTokens = Arrays.asList(
-                integerTypeToken,
+                new IntegerTypeToken(),
                 variableNameToken,
-                assignmentToken,
+                new AssignmentToken(),
                 integerValueToken,
-                plusOperatorToken,
-                new OpeningBracketToken(),
-                integerValueToken1,
-                minusOperatorToken,
-                integerValueToken2,
-                new CloseBracketToken(),
+                new PlusOperatorToken(),
+                integerValueToken,
+                new MinusOperatorToken(),
+                integerValueToken,
+                new DivisionOperatorToken(),
+                integerValueToken,
+                new MultiplierOperatorToken(),
+                integerValueToken,
                 new SemicolonToken()
         );
 

@@ -3,7 +3,7 @@ package dev.vladimir.cfecodemodule.linevariants;
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.tokens.another.LoggerToken;
 import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
-import dev.vladimir.cfecodemodule.tokens.primitiveoperators.AssignmentToken;
+import dev.vladimir.cfecodemodule.tokens.symbols.AssignmentToken;
 import dev.vladimir.cfecodemodule.tokens.primitiveoperators.PlusOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitivevalues.PrimitiveValueToken;
 import dev.vladimir.cfecodemodule.tokens.symbols.SemicolonToken;

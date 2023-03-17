@@ -2,7 +2,7 @@ package dev.vladimir.cfecodemodule.linevariants;
 
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
-import dev.vladimir.cfecodemodule.tokens.primitiveoperators.AssignmentToken;
+import dev.vladimir.cfecodemodule.tokens.symbols.AssignmentToken;
 import dev.vladimir.cfecodemodule.tokens.primitiveoperators.MinusOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitiveoperators.PlusOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitivetypes.IntegerTypeToken;

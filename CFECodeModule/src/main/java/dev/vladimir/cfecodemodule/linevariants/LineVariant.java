@@ -1,11 +1,8 @@
 package dev.vladimir.cfecodemodule.linevariants;
 
 import dev.vladimir.cfecodemodule.tokens.Token;
-import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
-import dev.vladimir.cfecodemodule.tokens.primitivevalues.IntegerValueToken;
 import dev.vladimir.cfecodemodule.utils.CommonScope;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class LineVariant {
@@ -31,25 +28,5 @@ public abstract class LineVariant {
 
     protected interface LineAction {
         void makeAction(List<? extends Token> lineTokens);
-    }
-
-    protected List<? extends Token> setValuesInsteadVariables(List<? extends Token> lineTokens) {
-        List<Token> result = new ArrayList<>();
-
-        for (Token token : lineTokens) {
-            if (token.getClass().equals(VariableNameToken.class)) {
-                result.add(
-                        new IntegerValueToken(
-                                (Integer) commonScope
-                                        .getVariablesScope()
-                                        .getVariable(token.getValue())
-                                        .value()
-                        )
-                );
-                continue;
-            }
-            result.add(token);
-        }
-        return result;
     }
 }

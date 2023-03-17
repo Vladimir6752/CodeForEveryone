@@ -3,7 +3,7 @@ package dev.vladimir.cfecodemodule.linevariants;
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.tokens.another.LoggerToken;
 import dev.vladimir.cfecodemodule.tokens.symbols.SemicolonToken;
-import dev.vladimir.cfecodemodule.utils.CalculatedValue;
+import dev.vladimir.cfecodemodule.utils.CalculatedIntegerValue;
 import dev.vladimir.cfecodemodule.utils.CommonScope;
 
 import java.util.List;
@@ -12,12 +12,12 @@ public class LoggerLine extends LineVariant {
     public LoggerLine(CommonScope commonScope, List<? extends Token> lineTokens) {
         super(commonScope, lineTokens);
         currentLineAction = lineTokens1 -> {
-            List<? extends Token> inputTokens = setValuesInsteadVariables(
-                    lineTokens1.subList(1, lineTokens1.size() - 1)
+            List<? extends Token> inputTokens = CalculatedIntegerValue.setValuesInsteadVariables(
+                    lineTokens1.subList(1, lineTokens1.size() - 1), commonScope
             );
 
             System.out.println(
-                    CalculatedValue.calculateTokens(inputTokens)
+                    CalculatedIntegerValue.calculateTokens(inputTokens)
             );
         };
     }
@@ -38,6 +38,6 @@ public class LoggerLine extends LineVariant {
 
         List<Class<? extends Token>> valueTokenClasses = inputTokenClasses.subList(1, inputTokenClasses.size() - 1);
 
-        return CalculatedValue.isCorrectValueFor(valueTokenClasses);
+        return CalculatedIntegerValue.isCorrectValueFor(valueTokenClasses);
     }
 }

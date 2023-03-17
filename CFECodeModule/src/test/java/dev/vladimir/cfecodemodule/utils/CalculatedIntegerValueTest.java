@@ -2,7 +2,9 @@ package dev.vladimir.cfecodemodule.utils;
 
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
-import dev.vladimir.cfecodemodule.tokens.primitiveoperators.AssignmentToken;
+import dev.vladimir.cfecodemodule.tokens.primitiveoperators.DivisionOperatorToken;
+import dev.vladimir.cfecodemodule.tokens.primitiveoperators.MultiplierOperatorToken;
+import dev.vladimir.cfecodemodule.tokens.symbols.AssignmentToken;
 import dev.vladimir.cfecodemodule.tokens.primitiveoperators.MinusOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitiveoperators.PlusOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitivetypes.IntegerTypeToken;
@@ -13,7 +15,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CalculatedValueTest {
+class CalculatedIntegerValueTest {
 
     @Test
     void isCorrectValueFor_return_true_when_tokens_is_compatible() {
@@ -33,8 +35,8 @@ class CalculatedValueTest {
                 IntegerValueToken.class
         );
 
-        assertTrue(CalculatedValue.isCorrectValueFor(firstVariation));
-        assertTrue(CalculatedValue.isCorrectValueFor(secondVariation));
+        assertTrue(CalculatedIntegerValue.isCorrectValueFor(firstVariation));
+        assertTrue(CalculatedIntegerValue.isCorrectValueFor(secondVariation));
     }
 
     @Test
@@ -47,8 +49,8 @@ class CalculatedValueTest {
                 VariableNameToken.class
         );
 
-        assertTrue(CalculatedValue.isCorrectValueFor(firstVariation));
-        assertTrue(CalculatedValue.isCorrectValueFor(secondVariation));
+        assertTrue(CalculatedIntegerValue.isCorrectValueFor(firstVariation));
+        assertTrue(CalculatedIntegerValue.isCorrectValueFor(secondVariation));
     }
 
     @Test
@@ -72,9 +74,32 @@ class CalculatedValueTest {
                 PlusOperatorToken.class
         );
 
-        assertFalse(CalculatedValue.isCorrectValueFor(variation));
-        assertFalse(CalculatedValue.isCorrectValueFor(firstVariation));
-        assertFalse(CalculatedValue.isCorrectValueFor(secondVariation));
+        assertFalse(CalculatedIntegerValue.isCorrectValueFor(variation));
+        assertFalse(CalculatedIntegerValue.isCorrectValueFor(firstVariation));
+        assertFalse(CalculatedIntegerValue.isCorrectValueFor(secondVariation));
+    }
+
+    @Test
+    void calculateTokens_throw_IllegalStateException_when_division_by_zero() {
+        List<? extends Token> tokens = List.of(
+                new IntegerValueToken(15),
+                new MinusOperatorToken(),
+                new IntegerValueToken(10),
+                new PlusOperatorToken(),
+                new IntegerValueToken(15),
+                new DivisionOperatorToken(),
+                new IntegerValueToken(0)
+        );
+
+        IllegalStateException illegalStateException = assertThrows(
+                IllegalStateException.class,
+                () -> CalculatedIntegerValue.calculateTokens(tokens)
+        );
+
+        assertEquals(
+                "Division by zero",
+                illegalStateException.getMessage()
+        );
     }
 
     @Test
@@ -99,19 +124,36 @@ class CalculatedValueTest {
                 new IntegerValueToken(10)
         );
 
+        List<? extends Token> tokens3 = List.of(
+                new IntegerValueToken(2),
+                new PlusOperatorToken(),
+                new IntegerValueToken(2),
+                new MultiplierOperatorToken(),
+                new IntegerValueToken(2),
+                new PlusOperatorToken(),
+                new IntegerValueToken(2),
+                new DivisionOperatorToken(),
+                new IntegerValueToken(2)
+        );
+
         assertEquals(
                 25,
-                CalculatedValue.calculateTokens(tokens)
+                CalculatedIntegerValue.calculateTokens(tokens)
         );
 
         assertEquals(
                 5,
-                CalculatedValue.calculateTokens(tokens1)
+                CalculatedIntegerValue.calculateTokens(tokens1)
         );
 
         assertEquals(
                 10,
-                CalculatedValue.calculateTokens(tokens2)
+                CalculatedIntegerValue.calculateTokens(tokens2)
+        );
+
+        assertEquals(
+                7,
+                CalculatedIntegerValue.calculateTokens(tokens3)
         );
     }
 }

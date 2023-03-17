@@ -3,13 +3,15 @@ package dev.vladimir.cfecodemodule.parsing;
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.tokens.another.LoggerToken;
 import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
-import dev.vladimir.cfecodemodule.tokens.primitiveoperators.AssignmentToken;
+import dev.vladimir.cfecodemodule.tokens.primitiveoperators.DivisionOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitiveoperators.MinusOperatorToken;
+import dev.vladimir.cfecodemodule.tokens.primitiveoperators.MultiplierOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitiveoperators.PlusOperatorToken;
+import dev.vladimir.cfecodemodule.tokens.primitivetypes.BooleanTypeToken;
 import dev.vladimir.cfecodemodule.tokens.primitivetypes.IntegerTypeToken;
+import dev.vladimir.cfecodemodule.tokens.primitivevalues.BooleanValueToken;
 import dev.vladimir.cfecodemodule.tokens.primitivevalues.IntegerValueToken;
-import dev.vladimir.cfecodemodule.tokens.symbols.CloseBracketToken;
-import dev.vladimir.cfecodemodule.tokens.symbols.OpeningBracketToken;
+import dev.vladimir.cfecodemodule.tokens.symbols.AssignmentToken;
 import dev.vladimir.cfecodemodule.tokens.symbols.SemicolonToken;
 
 import java.util.ArrayList;
@@ -21,22 +23,24 @@ import java.util.regex.Pattern;
 public class Lexer {
     private static final List<? extends Token> ALL_TOKENS = Arrays.asList(
             new IntegerTypeToken(),
+            new BooleanTypeToken(),
             new IntegerValueToken(),
+            new BooleanValueToken(),
             new AssignmentToken(),
+            new LoggerToken(),
             new PlusOperatorToken(),
             new MinusOperatorToken(),
-            new LoggerToken(),
+            new MultiplierOperatorToken(),
+            new DivisionOperatorToken(),
             new SemicolonToken(),
-            new OpeningBracketToken(),
-            new CloseBracketToken(),
             new VariableNameToken()
     );
     private final String[] lines;
-    private final String SEPARATOR_SYMBOL = "\n";
-    private final String COMMENTARY_SYMBOL = "#";
+    private final String LINE_SEPARATOR_SYMBOL = "\n";
+    private final String LINE_COMMENTARY_SYMBOL = "#";
 
     public Lexer(String data) {
-        lines = data.split(SEPARATOR_SYMBOL);
+        lines = data.split(LINE_SEPARATOR_SYMBOL);
     }
 
     public List<List<? extends Token>> analyze() {
@@ -45,7 +49,7 @@ public class Lexer {
         for (int i = 0; i < lines.length; i++) {
             String line = lines[i];
 
-            if (line.startsWith(COMMENTARY_SYMBOL) || line.isEmpty())
+            if (line.startsWith(LINE_COMMENTARY_SYMBOL) || line.isEmpty())
                 continue;
 
             ArrayList<Token> currentLine = new ArrayList<>();

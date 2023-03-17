@@ -1,6 +1,6 @@
 Число someVar = 15 ;
 Число someVar = 20 ;
-Число variable = 5 + someVar ;
+Число variable = 5 + someVarr ;
 Число threeVar = variable - someVar + 10 ;
 Консоль threeVar ;
 Консоль 10 + 15 + 20 ;

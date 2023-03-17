@@ -2,10 +2,11 @@ package dev.vladimir.cfecodemodule.linevariants;
 
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
-import dev.vladimir.cfecodemodule.tokens.primitiveoperators.AssignmentToken;
+import dev.vladimir.cfecodemodule.tokens.symbols.AssignmentToken;
 import dev.vladimir.cfecodemodule.tokens.primitivetypes.PrimitiveTypeToken;
 import dev.vladimir.cfecodemodule.tokens.symbols.SemicolonToken;
-import dev.vladimir.cfecodemodule.utils.CalculatedValue;
+import dev.vladimir.cfecodemodule.utils.CalculatedBooleanValue;
+import dev.vladimir.cfecodemodule.utils.CalculatedIntegerValue;
 import dev.vladimir.cfecodemodule.utils.CommonScope;
 import dev.vladimir.cfecodemodule.utils.Variable;
 
@@ -14,42 +15,88 @@ import java.util.List;
 
 public class InteractionWithVariableLine extends LineVariant {
     private final LineAction creatingVariableWithoutValueAction = (List<? extends Token> lineTokens) -> {
-        Token variableTypeToken = lineTokens.get(0);
-        Token variableNameToken = lineTokens.get(1);
+        String variableType = lineTokens.get(0).getValue();
+        String variableName = lineTokens.get(1).getValue();
 
-        Variable variable = new Variable(variableNameToken.getValue(), variableTypeToken.getValue(), 0);
+        Variable settingVariable = commonScope.getVariablesScope().getVariable(variableName);
+
+        if(settingVariable != null)
+            throw new IllegalStateException(
+                    String.format("Variable with name: '%s' already exists in the current scope", variableName)
+            );
+
+        Variable variable = new Variable(variableName, variableType, 0);
         commonScope.getVariablesScope().setVariableInScope(variable);
     };
 
     private final LineAction creatingVariableWithValueAction = (List<? extends Token> lineTokens) -> {
-        Token variableTypeToken = lineTokens.get(0);
-        Token variableNameToken = lineTokens.get(1);
+        String variableType = lineTokens.get(0).getValue();
+        String variableName = lineTokens.get(1).getValue();
 
-        List<? extends Token> inputTokens = setValuesInsteadVariables(
-                lineTokens.subList(3, lineTokens.size() - 1)
-        );
-
-        Variable variable = new Variable(
-                    variableNameToken.getValue(),
-                    variableTypeToken.getValue(),
-                    CalculatedValue.calculateTokens(inputTokens)
-        );
-        commonScope.getVariablesScope().setVariableInScope(variable);
+        if(variableType.equals("Число"))
+            createIntegerVariable(lineTokens, variableName);
+        else if(variableType.equals("Логический"))
+            createBooleanVariable(lineTokens, variableName);
     };
 
-    private final LineAction settingValueInVariableAction = (List<? extends Token> lineTokens) -> {
-        Token variableNameToken = lineTokens.get(0);
-
-        List<? extends Token> inputTokens = setValuesInsteadVariables(
-                lineTokens.subList(2, lineTokens.size() - 1)
+    private void createBooleanVariable(List<? extends Token> lineTokens, String variableName) {
+        List<? extends Token> inputTokens = CalculatedBooleanValue.setValuesInsteadVariables(
+                lineTokens.subList(3, lineTokens.size() - 1), commonScope
         );
 
-        Variable settingVariable = commonScope.getVariablesScope().getVariable(variableNameToken.getValue());
+        Variable settingVariable = commonScope.getVariablesScope().getVariable(variableName);
+
+        if(settingVariable != null)
+            throw new IllegalStateException(
+                    String.format("Variable with name: '%s' already exists in the current scope", variableName)
+            );
 
         Variable variable = new Variable(
-                variableNameToken.getValue(),
+                variableName,
+                "Число",
+                CalculatedIntegerValue.calculateTokens(inputTokens)
+        );
+        commonScope.getVariablesScope().setVariableInScope(variable);
+    }
+
+    private void createIntegerVariable(List<? extends Token> lineTokens, String variableName) {
+        List<? extends Token> inputTokens = CalculatedIntegerValue.setValuesInsteadVariables(
+                lineTokens.subList(3, lineTokens.size() - 1), commonScope
+        );
+
+        Variable settingVariable = commonScope.getVariablesScope().getVariable(variableName);
+
+        if(settingVariable != null)
+            throw new IllegalStateException(
+                    String.format("Variable with name: '%s' already exists in the current scope", variableName)
+            );
+
+        Variable variable = new Variable(
+                variableName,
+                    "Число",
+                    CalculatedIntegerValue.calculateTokens(inputTokens)
+        );
+        commonScope.getVariablesScope().setVariableInScope(variable);
+    }
+
+    private final LineAction settingValueInVariableAction = (List<? extends Token> lineTokens) -> {
+        String expectedVariableName = lineTokens.get(0).getValue();
+
+        List<? extends Token> inputTokens = CalculatedIntegerValue.setValuesInsteadVariables(
+                lineTokens.subList(2, lineTokens.size() - 1), commonScope
+        );
+
+        Variable settingVariable = commonScope.getVariablesScope().getVariable(expectedVariableName);
+
+        if(settingVariable == null)
+            throw new IllegalStateException(
+                    String.format("Variable with name: '%s' was not found in the current scope", expectedVariableName)
+            );
+
+        Variable variable = new Variable(
+                expectedVariableName,
                 settingVariable.type(),
-                CalculatedValue.calculateTokens(inputTokens)
+                CalculatedIntegerValue.calculateTokens(inputTokens)
         );
         commonScope.getVariablesScope().setVariableInScope(variable);
     };
@@ -111,7 +158,7 @@ public class InteractionWithVariableLine extends LineVariant {
         Class<? extends Token> expectedAssignmentToken = variablePart.get(1);
         if (!expectedAssignmentToken.equals(AssignmentToken.class)) return false;
 
-        return CalculatedValue.isCorrectValueFor(assignmentValuePart);
+        return CalculatedIntegerValue.isCorrectValueFor(assignmentValuePart);
     }
 
     private boolean isCreatingVariableWithValueLine(List<Class<? extends Token>> inputTokenClasses, Class<? extends Token> firstTokenClass) {
@@ -130,6 +177,6 @@ public class InteractionWithVariableLine extends LineVariant {
         Class<? extends Token> expectedAssignmentToken = variablePart.get(2);
         if (!expectedAssignmentToken.equals(AssignmentToken.class)) return false;
 
-        return CalculatedValue.isCorrectValueFor(assignmentValuePart);
+        return CalculatedIntegerValue.isCorrectValueFor(assignmentValuePart);
     }
 }
