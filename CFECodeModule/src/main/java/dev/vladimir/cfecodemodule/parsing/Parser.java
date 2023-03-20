@@ -4,7 +4,13 @@ import dev.vladimir.cfecodemodule.linevariants.InteractionWithVariableLine;
 import dev.vladimir.cfecodemodule.linevariants.LineVariant;
 import dev.vladimir.cfecodemodule.linevariants.LoggerLine;
 import dev.vladimir.cfecodemodule.tokens.Token;
+import dev.vladimir.cfecodemodule.tokens.primitiveoperators.bool.PrimitiveBooleanOperatorToken;
+import dev.vladimir.cfecodemodule.tokens.primitivetypes.BooleanTypeToken;
+import dev.vladimir.cfecodemodule.tokens.primitivevalues.BooleanValueToken;
 import dev.vladimir.cfecodemodule.utils.CommonScope;
+import dev.vladimir.cfecodemodule.utils.calculatedvalue.AbstractCalculatedValue;
+import dev.vladimir.cfecodemodule.utils.calculatedvalue.CalculatedBooleanValue;
+import dev.vladimir.cfecodemodule.utils.calculatedvalue.CalculatedIntegerValue;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,8 +40,8 @@ public class Parser {
             LineVariant newInstance;
             try {
                 newInstance = variantLine
-                        .getDeclaredConstructor(CommonScope.class, List.class)
-                        .newInstance(commonScope, lineTokens);
+                        .getDeclaredConstructor(CommonScope.class, List.class, AbstractCalculatedValue.class)
+                        .newInstance(commonScope, lineTokens, determineTypeCalculatedValue(lineTokens));
             } catch (Exception e) {
                 throw new RuntimeException("required constructor is not initialized", e);
             }
@@ -52,6 +58,15 @@ public class Parser {
                     Arrays.toString(lineTokens.toArray())
                 )
         );
+    }
+
+    private AbstractCalculatedValue determineTypeCalculatedValue(List<? extends Token> lineTokens) {
+        //TODO refactor this method
+        for (Token lineToken : lineTokens) {
+            if(lineToken instanceof BooleanTypeToken || lineToken instanceof BooleanValueToken || lineToken instanceof PrimitiveBooleanOperatorToken)
+                return new CalculatedBooleanValue();
+        }
+        return new CalculatedIntegerValue();
     }
 
     private List<Class<? extends Token>> getLineTokenClasses(List<? extends Token> tokens) {

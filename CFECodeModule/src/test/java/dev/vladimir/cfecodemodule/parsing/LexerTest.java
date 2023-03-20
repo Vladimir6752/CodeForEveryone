@@ -2,11 +2,11 @@ package dev.vladimir.cfecodemodule.parsing;
 
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
-import dev.vladimir.cfecodemodule.tokens.primitiveoperators.DivisionOperatorToken;
-import dev.vladimir.cfecodemodule.tokens.primitiveoperators.MultiplierOperatorToken;
+import dev.vladimir.cfecodemodule.tokens.primitiveoperators.integer.DivisionOperatorToken;
+import dev.vladimir.cfecodemodule.tokens.primitiveoperators.integer.MultiplierOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.symbols.AssignmentToken;
-import dev.vladimir.cfecodemodule.tokens.primitiveoperators.MinusOperatorToken;
-import dev.vladimir.cfecodemodule.tokens.primitiveoperators.PlusOperatorToken;
+import dev.vladimir.cfecodemodule.tokens.primitiveoperators.integer.MinusOperatorToken;
+import dev.vladimir.cfecodemodule.tokens.primitiveoperators.integer.PlusOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitivetypes.IntegerTypeToken;
 import dev.vladimir.cfecodemodule.tokens.primitivevalues.IntegerValueToken;
 import dev.vladimir.cfecodemodule.tokens.symbols.SemicolonToken;
@@ -105,7 +105,7 @@ class LexerTest {
         );
 
         assertEquals(
-                "illegal token with value '@#%$@^' on line 1",
+                "illegal token with value @#%$@^ on line 1",
                 illegalArgumentException.getMessage()
         );
     }

@@ -2,13 +2,14 @@ package dev.vladimir.cfecodemodule.utils;
 
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
-import dev.vladimir.cfecodemodule.tokens.primitiveoperators.DivisionOperatorToken;
-import dev.vladimir.cfecodemodule.tokens.primitiveoperators.MultiplierOperatorToken;
+import dev.vladimir.cfecodemodule.tokens.primitiveoperators.integer.DivisionOperatorToken;
+import dev.vladimir.cfecodemodule.tokens.primitiveoperators.integer.MultiplierOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.symbols.AssignmentToken;
-import dev.vladimir.cfecodemodule.tokens.primitiveoperators.MinusOperatorToken;
-import dev.vladimir.cfecodemodule.tokens.primitiveoperators.PlusOperatorToken;
+import dev.vladimir.cfecodemodule.tokens.primitiveoperators.integer.MinusOperatorToken;
+import dev.vladimir.cfecodemodule.tokens.primitiveoperators.integer.PlusOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitivetypes.IntegerTypeToken;
 import dev.vladimir.cfecodemodule.tokens.primitivevalues.IntegerValueToken;
+import dev.vladimir.cfecodemodule.utils.calculatedvalue.CalculatedIntegerValue;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -35,8 +36,9 @@ class CalculatedIntegerValueTest {
                 IntegerValueToken.class
         );
 
-        assertTrue(CalculatedIntegerValue.isCorrectValueFor(firstVariation));
-        assertTrue(CalculatedIntegerValue.isCorrectValueFor(secondVariation));
+        CalculatedIntegerValue calculatedIntegerValue = new CalculatedIntegerValue();
+        assertTrue(calculatedIntegerValue.isCorrectValueFor(firstVariation));
+        assertTrue(calculatedIntegerValue.isCorrectValueFor(secondVariation));
     }
 
     @Test
@@ -49,8 +51,9 @@ class CalculatedIntegerValueTest {
                 VariableNameToken.class
         );
 
-        assertTrue(CalculatedIntegerValue.isCorrectValueFor(firstVariation));
-        assertTrue(CalculatedIntegerValue.isCorrectValueFor(secondVariation));
+        CalculatedIntegerValue calculatedIntegerValue = new CalculatedIntegerValue();
+        assertTrue(calculatedIntegerValue.isCorrectValueFor(firstVariation));
+        assertTrue(calculatedIntegerValue.isCorrectValueFor(secondVariation));
     }
 
     @Test
@@ -74,9 +77,10 @@ class CalculatedIntegerValueTest {
                 PlusOperatorToken.class
         );
 
-        assertFalse(CalculatedIntegerValue.isCorrectValueFor(variation));
-        assertFalse(CalculatedIntegerValue.isCorrectValueFor(firstVariation));
-        assertFalse(CalculatedIntegerValue.isCorrectValueFor(secondVariation));
+        CalculatedIntegerValue calculatedIntegerValue = new CalculatedIntegerValue();
+        assertFalse(calculatedIntegerValue.isCorrectValueFor(variation));
+        assertFalse(calculatedIntegerValue.isCorrectValueFor(firstVariation));
+        assertFalse(calculatedIntegerValue.isCorrectValueFor(secondVariation));
     }
 
     @Test
@@ -91,9 +95,10 @@ class CalculatedIntegerValueTest {
                 new IntegerValueToken(0)
         );
 
+        CalculatedIntegerValue calculatedIntegerValue = new CalculatedIntegerValue();
         IllegalStateException illegalStateException = assertThrows(
                 IllegalStateException.class,
-                () -> CalculatedIntegerValue.calculateTokens(tokens)
+                () -> calculatedIntegerValue.calculateTokens(tokens)
         );
 
         assertEquals(
@@ -136,24 +141,44 @@ class CalculatedIntegerValueTest {
                 new IntegerValueToken(2)
         );
 
+        CalculatedIntegerValue calculatedIntegerValue = new CalculatedIntegerValue();
         assertEquals(
                 25,
-                CalculatedIntegerValue.calculateTokens(tokens)
+                calculatedIntegerValue.calculateTokens(tokens)
         );
 
         assertEquals(
                 5,
-                CalculatedIntegerValue.calculateTokens(tokens1)
+                calculatedIntegerValue.calculateTokens(tokens1)
         );
 
         assertEquals(
                 10,
-                CalculatedIntegerValue.calculateTokens(tokens2)
+                calculatedIntegerValue.calculateTokens(tokens2)
         );
 
         assertEquals(
                 7,
-                CalculatedIntegerValue.calculateTokens(tokens3)
+                calculatedIntegerValue.calculateTokens(tokens3)
+        );
+    }
+
+    @Test
+    void setValuesInsteadVariables_throw_IllegalStateException_when_variables_is_null() {
+        List<? extends Token> tokens = List.of(
+                new IntegerValueToken(5),
+                new PlusOperatorToken(),
+                new VariableNameToken("someNotExistVariable")
+        );
+
+        IllegalStateException illegalStateException = assertThrows(
+                IllegalStateException.class,
+                () -> new CalculatedIntegerValue().setValuesInsteadVariables(tokens, new CommonScope())
+        );
+
+        assertEquals(
+                "Variable with name: 'someNotExistVariable' was not found in the current scope",
+                illegalStateException.getMessage()
         );
     }
 }

@@ -15,13 +15,13 @@ class VariablesScopeTest {
         VariablesScope variablesScope = new VariablesScope();
         String testVariableName = "testVariable";
 
-        variablesScope.setVariableInScope(new Variable(testVariableName, "int", 1));
+        variablesScope.setVariableInScope(new Variable(testVariableName, "int", String.valueOf(1)));
 
         assertEquals(variablesScope.getAllVariableEntry().size(), 1);
 
         Variable returnedVariable = variablesScope.getVariable(testVariableName);
 
-        assertEquals(1, returnedVariable.value());
+        assertEquals(String.valueOf(1), returnedVariable.value());
         assertEquals(testVariableName, returnedVariable.name());
         assertEquals("int", returnedVariable.type());
     }
@@ -31,9 +31,9 @@ class VariablesScopeTest {
         VariablesScope variablesScope = new VariablesScope();
 
         String commonName = "someName";
-        Variable beginVariable = new Variable(commonName, "int", 13);
+        Variable beginVariable = new Variable(commonName, "int", String.valueOf(13));
 
-        Variable expectedVariable = new Variable(commonName, "int", 20);
+        Variable expectedVariable = new Variable(commonName, "int", String.valueOf(20));
 
         variablesScope.setVariableInScope(beginVariable);
 
@@ -51,7 +51,7 @@ class VariablesScopeTest {
         VariablesScope variablesScope = new VariablesScope();
 
         String commonName = "someName";
-        Variable beginVariable = new Variable(commonName, "int", 13);
+        Variable beginVariable = new Variable(commonName, "int", String.valueOf(13));
 
         Variable expectedThrowVariable = new Variable(commonName, "string", "some string");
 
@@ -73,8 +73,8 @@ class VariablesScopeTest {
         VariablesScope variablesScope = new VariablesScope();
         assertEquals(0, variablesScope.getAllVariableEntry().size());
 
-        variablesScope.setVariableInScope(new Variable("someName", "someType", 10));
-        variablesScope.setVariableInScope(new Variable("someName", "someType", 10));
+        variablesScope.setVariableInScope(new Variable("someName", "someType", String.valueOf(10)));
+        variablesScope.setVariableInScope(new Variable("someName", "someType", String.valueOf(10)));
 
         variablesScope.clearScope();
 

@@ -3,21 +3,21 @@ package dev.vladimir.cfecodemodule.linevariants;
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.tokens.another.LoggerToken;
 import dev.vladimir.cfecodemodule.tokens.symbols.SemicolonToken;
-import dev.vladimir.cfecodemodule.utils.CalculatedIntegerValue;
 import dev.vladimir.cfecodemodule.utils.CommonScope;
+import dev.vladimir.cfecodemodule.utils.calculatedvalue.AbstractCalculatedValue;
 
 import java.util.List;
 
 public class LoggerLine extends LineVariant {
-    public LoggerLine(CommonScope commonScope, List<? extends Token> lineTokens) {
-        super(commonScope, lineTokens);
+    public LoggerLine(CommonScope commonScope, List<? extends Token> lineTokens, AbstractCalculatedValue calculatedValue) {
+        super(commonScope, lineTokens, calculatedValue);
         currentLineAction = lineTokens1 -> {
-            List<? extends Token> inputTokens = CalculatedIntegerValue.setValuesInsteadVariables(
+            List<? extends Token> inputTokens = calculatedValue.setValuesInsteadVariables(
                     lineTokens1.subList(1, lineTokens1.size() - 1), commonScope
             );
 
             System.out.println(
-                    CalculatedIntegerValue.calculateTokens(inputTokens)
+                    calculatedValue.calculateTokens(inputTokens)
             );
         };
     }
@@ -36,8 +36,8 @@ public class LoggerLine extends LineVariant {
         if(!SemicolonToken.class.isAssignableFrom(lastTokenClass))
             return false;
 
-        List<Class<? extends Token>> valueTokenClasses = inputTokenClasses.subList(1, inputTokenClasses.size() - 1);
+        List<Class<? extends Token>> lineValueTokensWithoutSemicolon = inputTokenClasses.subList(1, inputTokenClasses.size() - 1);
 
-        return CalculatedIntegerValue.isCorrectValueFor(valueTokenClasses);
+        return calculatedValue.isCorrectValueFor(lineValueTokensWithoutSemicolon);
     }
 }

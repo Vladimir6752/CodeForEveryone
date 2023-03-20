@@ -2,10 +2,12 @@ package dev.vladimir.cfecodemodule.parsing;
 
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
-import dev.vladimir.cfecodemodule.tokens.symbols.AssignmentToken;
-import dev.vladimir.cfecodemodule.tokens.primitiveoperators.PlusOperatorToken;
+import dev.vladimir.cfecodemodule.tokens.primitiveoperators.integer.PlusOperatorToken;
+import dev.vladimir.cfecodemodule.tokens.primitivetypes.BooleanTypeToken;
 import dev.vladimir.cfecodemodule.tokens.primitivetypes.IntegerTypeToken;
+import dev.vladimir.cfecodemodule.tokens.primitivevalues.BooleanValueToken;
 import dev.vladimir.cfecodemodule.tokens.primitivevalues.IntegerValueToken;
+import dev.vladimir.cfecodemodule.tokens.symbols.AssignmentToken;
 import dev.vladimir.cfecodemodule.tokens.symbols.SemicolonToken;
 import dev.vladimir.cfecodemodule.utils.CommonScope;
 import dev.vladimir.cfecodemodule.utils.Variable;
@@ -13,6 +15,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -21,7 +25,7 @@ class ParserTest {
     @Test
     void parsing_incompatible_tokens_throw_IllegalStateException() {
         List<List<? extends Token>> inputTokenizeLines = List.of(
-                List.of(new VariableNameToken(), new IntegerTypeToken(), new IntegerValueToken(10), new AssignmentToken(), new IntegerValueToken(10), new PlusOperatorToken())
+                List.of(new IntegerTypeToken(), new VariableNameToken(), new IntegerValueToken(10), new AssignmentToken(), new IntegerValueToken(10), new PlusOperatorToken())
         );
 
         Parser parser = new Parser(inputTokenizeLines, null);
@@ -44,7 +48,7 @@ class ParserTest {
     void create_one_variable_without_value() {
         CommonScope commonScope = new CommonScope();
 
-        Variable expectedVariable = new Variable("someName", "Число", 0);
+        Variable expectedVariable = new Variable("someName", "Число", String.valueOf(0));
         List<List<? extends Token>> inputTokenizeLines = List.of(
                 // Число someName ;
                 List.of(
@@ -75,10 +79,10 @@ class ParserTest {
     void create_one_variable_with_calculated_value() {
         CommonScope commonScope = new CommonScope();
 
-        Variable expectedVariable = new Variable("someName", "Число", 20);
+        Variable expectedVariable = new Variable("someName", "Число", String.valueOf(20));
 
         commonScope.getVariablesScope().setVariableInScope(
-                new Variable("someExistingVariable", "Число", 10)
+                new Variable("someExistingVariable", "Число", String.valueOf(10))
         );
         List<List<? extends Token>> inputTokenizeLines = List.of(
                 List.of(
@@ -113,11 +117,11 @@ class ParserTest {
     void creatingVariableWithValue_throw_IllegalStateException_if_variable_is_exist() {
         CommonScope commonScope = new CommonScope();
 
-        Variable expectedVariable = new Variable("someName", "Число", 20);
+        Variable expectedVariable = new Variable("someName", "Число", String.valueOf(20));
 
         commonScope.getVariablesScope().setVariableInScope(expectedVariable);
         commonScope.getVariablesScope().setVariableInScope(
-                new Variable("someExistingVariable", "Число", 10)
+                new Variable("someExistingVariable", "Число", String.valueOf(10))
         );
         List<List<? extends Token>> inputTokenizeLines = List.of(
                 List.of(
@@ -149,11 +153,11 @@ class ParserTest {
     void creatingVariableWithoutValue_throw_IllegalStateException_if_variable_is_exist() {
         CommonScope commonScope = new CommonScope();
 
-        Variable expectedVariable = new Variable("someName", "Число", 20);
+        Variable expectedVariable = new Variable("someName", "Число", String.valueOf(20));
 
         commonScope.getVariablesScope().setVariableInScope(expectedVariable);
         commonScope.getVariablesScope().setVariableInScope(
-                new Variable("someExistingVariable", "Число", 10)
+                new Variable("someExistingVariable", "Число", String.valueOf(10))
         );
         List<List<? extends Token>> inputTokenizeLines = List.of(
                 List.of(
@@ -181,7 +185,7 @@ class ParserTest {
     void setting_variable_with_primitive_value() {
         CommonScope commonScope = new CommonScope();
 
-        Variable settingVariable = new Variable("someName", "Число", 0);
+        Variable settingVariable = new Variable("someName", "Число", String.valueOf(0));
         commonScope.getVariablesScope().setVariableInScope(settingVariable);
 
         List<List<? extends Token>> inputTokenizeLines = List.of(
@@ -206,7 +210,7 @@ class ParserTest {
         );
 
         assertEquals(
-                new Variable("someName", "Число", 10),
+                new Variable("someName", "Число", String.valueOf(10)),
                 actualVariable
         );
     }
@@ -215,11 +219,11 @@ class ParserTest {
     void setting_variable_with_calculated_value() {
         CommonScope commonScope = new CommonScope();
 
-        Variable settingVariable = new Variable("someName", "Число", 0);
+        Variable settingVariable = new Variable("someName", "Число", String.valueOf(0));
         commonScope.getVariablesScope().setVariableInScope(settingVariable);
-        Variable variable1 = new Variable("someExistVariable1", "Число", 5);
+        Variable variable1 = new Variable("someExistVariable1", "Число", String.valueOf(5));
         commonScope.getVariablesScope().setVariableInScope(variable1);
-        Variable variable2 = new Variable("someExistVariable2", "Число", 10);
+        Variable variable2 = new Variable("someExistVariable2", "Число", String.valueOf(10));
         commonScope.getVariablesScope().setVariableInScope(variable2);
 
         List<List<? extends Token>> inputTokenizeLines = List.of(
@@ -248,7 +252,7 @@ class ParserTest {
         );
 
         assertEquals(
-                new Variable("someName", "Число", 25),
+                new Variable("someName", "Число", String.valueOf(25)),
                 actualVariable
         );
     }
@@ -256,7 +260,7 @@ class ParserTest {
     @Test
     void settingVariableValue_throwIllegalStateException_if_variable_is_null() {
         List<List<? extends Token>> inputTokenizeLines = List.of(
-                // someName = 10 ;
+                // someNotExistVariableName = 10 ;
                 List.of(
                         new VariableNameToken("someNotExistVariableName"),
                         new AssignmentToken(),
@@ -287,6 +291,41 @@ class ParserTest {
         assertEquals(
                 expectedcommonScope,
                 parser.getCommonScope()
+        );
+    }
+
+    @Test
+    void creating_integer_and_boolean_variables() {
+        CommonScope beginingCommonScope = new CommonScope();
+        Variable booleanVariable = new Variable("someBooleanVariable", "Логический", "истина");
+        Variable integerVariable = new Variable("someIntegerVariable", "Число", "5");
+
+        List<Token> creatingIntVariableTokens = List.of(
+                new IntegerTypeToken(),
+                new VariableNameToken("someIntegerVariable"),
+                new AssignmentToken(),
+                new IntegerValueToken(5),
+                new SemicolonToken()
+        );
+        List<Token> creatingBoolVariableTokens = List.of(
+                new BooleanTypeToken(),
+                new VariableNameToken("someBooleanVariable"),
+                new AssignmentToken(),
+                new BooleanValueToken("истина"),
+                new SemicolonToken()
+        );
+
+        new Parser(
+                List.of(creatingIntVariableTokens, creatingBoolVariableTokens),
+                beginingCommonScope
+        ).beginParse();
+
+        assertEquals(
+                Set.of(
+                        Map.entry("someIntegerVariable",integerVariable),
+                        Map.entry("someBooleanVariable",booleanVariable)
+                ),
+                beginingCommonScope.getVariablesScope().getAllVariableEntry()
         );
     }
 }

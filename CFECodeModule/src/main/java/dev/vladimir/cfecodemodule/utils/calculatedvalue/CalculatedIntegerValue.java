@@ -1,22 +1,21 @@
-package dev.vladimir.cfecodemodule.utils;
+package dev.vladimir.cfecodemodule.utils.calculatedvalue;
 
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
 import dev.vladimir.cfecodemodule.tokens.primitiveoperators.PrimitiveOperatorToken;
+import dev.vladimir.cfecodemodule.tokens.primitiveoperators.integer.PrimitiveIntegerOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitivevalues.IntegerValueToken;
-import dev.vladimir.cfecodemodule.tokens.primitivevalues.PrimitiveValueToken;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class CalculatedValue {
-    private CalculatedValue() {}
-
-    public static boolean isCorrectValueFor(List<Class<? extends Token>> valueTokenClasses) {
+public class CalculatedIntegerValue extends AbstractCalculatedValue {
+    @Override
+    public boolean isCorrectValueFor(List<Class<? extends Token>> valueTokenClasses) {
         if(valueTokenClasses.size() % 2 == 0) return false;
 
-        if(valueTokenClasses.size() == 1) return isVariableOrValue(valueTokenClasses.get(0));
+        if(valueTokenClasses.size() == 1) return isIntegerVariableOrValue(valueTokenClasses.get(0));
 
         int i = 0;
         while (i < valueTokenClasses.size() - 1) {
@@ -25,11 +24,11 @@ public class CalculatedValue {
             Class<? extends Token> secondValueOrVariable = valueTokenClasses.get(i + 2);
 
             boolean isCorrect =
-                    isVariableOrValue(firstValueOrVariable)
+                    isIntegerVariableOrValue(firstValueOrVariable)
                     &&
-                    isVariableOrValue(secondValueOrVariable)
+                    PrimitiveIntegerOperatorToken.class.isAssignableFrom(operator)
                     &&
-                    PrimitiveOperatorToken.class.isAssignableFrom(operator);
+                    isIntegerVariableOrValue(secondValueOrVariable);
 
             if(!isCorrect) return false;
 
@@ -39,13 +38,8 @@ public class CalculatedValue {
         return true;
     }
 
-    private static boolean isVariableOrValue(Class<? extends Token> valueOrVariable) {
-        return PrimitiveValueToken.class.isAssignableFrom(valueOrVariable)
-               ||
-               VariableNameToken.class.isAssignableFrom(valueOrVariable);
-    }
-
-    public static int calculateTokens(List<? extends Token> inputTokens) {
+    @Override
+    public Object calculateTokens(List<? extends Token> inputTokens) {
         List<? extends Token> values = inputTokens;
 
         while (values.size() != 1) {
@@ -55,16 +49,22 @@ public class CalculatedValue {
         return Integer.parseInt(values.get(0).getValue());
     }
 
-    private static List<? extends Token> calculateImportantValue(List<? extends Token> values) {
-        List<PrimitiveOperatorToken<Integer>> operators = new ArrayList<>();
+    private static boolean isIntegerVariableOrValue(Class<? extends Token> valueOrVariable) {
+        return IntegerValueToken.class.isAssignableFrom(valueOrVariable)
+               ||
+               VariableNameToken.class.isAssignableFrom(valueOrVariable);
+    }
+
+    private List<? extends Token> calculateImportantValue(List<? extends Token> values) {
+        List<PrimitiveIntegerOperatorToken> operators = new ArrayList<>();
 
         for (Token value : values) {
-            if(value instanceof PrimitiveOperatorToken<?> primitiveOperatorToken) {
-                operators.add((PrimitiveOperatorToken<Integer>) primitiveOperatorToken);
+            if(value instanceof PrimitiveIntegerOperatorToken primitiveOperatorToken) {
+                operators.add(primitiveOperatorToken);
             }
         }
 
-        PrimitiveOperatorToken<Integer> maxImportantOperator = operators
+        PrimitiveIntegerOperatorToken maxImportantOperator = operators
                 .stream()
                 .max(Comparator.comparingInt(value -> value.getOperator().getImportance()))
                 .orElseThrow();
@@ -80,7 +80,7 @@ public class CalculatedValue {
         return result;
     }
 
-    private static IntegerValueToken getResultOperationToken(List<? extends Token> values, PrimitiveOperatorToken<Integer> maxImportantOperator, int maxImportantOperatorIndex) {
+    private IntegerValueToken getResultOperationToken(List<? extends Token> values, PrimitiveIntegerOperatorToken maxImportantOperator, int maxImportantOperatorIndex) {
         Token firstValueToken = values.get(maxImportantOperatorIndex - 1);
         Token secondValueToken = values.get(maxImportantOperatorIndex + 1);
 
@@ -91,7 +91,7 @@ public class CalculatedValue {
         );
     }
 
-    private static int getMaxImportantOperatorIndex(List<? extends Token> values, PrimitiveOperatorToken<Integer> maxImportantOperator) {
+    private int getMaxImportantOperatorIndex(List<? extends Token> values, PrimitiveOperatorToken maxImportantOperator) {
         for (int i = 0; i < values.size(); i++) {
             Token value = values.get(i);
             if(maxImportantOperator.getClass().equals(value.getClass())) {

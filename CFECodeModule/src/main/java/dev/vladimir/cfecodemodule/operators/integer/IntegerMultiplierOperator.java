@@ -1,6 +1,5 @@
-package dev.vladimir.cfecodemodule.operators.binary;
+package dev.vladimir.cfecodemodule.operators.integer;
 
-import dev.vladimir.cfecodemodule.operators.PrimitiveIntegerOperator;
 import dev.vladimir.cfecodemodule.tokens.Token;
 
 public class IntegerMultiplierOperator extends PrimitiveIntegerOperator {

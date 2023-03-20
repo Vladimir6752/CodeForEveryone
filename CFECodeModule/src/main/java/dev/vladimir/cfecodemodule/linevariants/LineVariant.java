@@ -2,6 +2,7 @@ package dev.vladimir.cfecodemodule.linevariants;
 
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.utils.CommonScope;
+import dev.vladimir.cfecodemodule.utils.calculatedvalue.AbstractCalculatedValue;
 
 import java.util.List;
 
@@ -9,11 +10,12 @@ public abstract class LineVariant {
     protected List<? extends Token> lineTokens;
     protected CommonScope commonScope;
     protected LineAction currentLineAction;
+    protected AbstractCalculatedValue calculatedValue;
 
-
-    public LineVariant(CommonScope commonScope, List<? extends Token> lineTokens) {
+    public LineVariant(CommonScope commonScope, List<? extends Token> lineTokens, AbstractCalculatedValue calculatedValue) {
         this.lineTokens = lineTokens;
         this.commonScope = commonScope;
+        this.calculatedValue = calculatedValue;
     }
 
     public LineVariant() {}
@@ -24,6 +26,11 @@ public abstract class LineVariant {
         if(currentLineAction != null) {
             currentLineAction.makeAction(lineTokens);
         } else throw new RuntimeException("line action is undefined");
+    }
+
+    public boolean isEqualsFor(List<Class<? extends Token>> tokenClasses, AbstractCalculatedValue calculatedValue) {
+        this.calculatedValue = calculatedValue;
+        return isEqualsFor(tokenClasses);
     }
 
     protected interface LineAction {

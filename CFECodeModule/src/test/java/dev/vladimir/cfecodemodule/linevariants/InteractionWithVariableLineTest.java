@@ -2,17 +2,18 @@ package dev.vladimir.cfecodemodule.linevariants;
 
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
-import dev.vladimir.cfecodemodule.tokens.symbols.AssignmentToken;
-import dev.vladimir.cfecodemodule.tokens.primitiveoperators.MinusOperatorToken;
-import dev.vladimir.cfecodemodule.tokens.primitiveoperators.PlusOperatorToken;
+import dev.vladimir.cfecodemodule.tokens.primitiveoperators.integer.MinusOperatorToken;
+import dev.vladimir.cfecodemodule.tokens.primitiveoperators.integer.PlusOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitivetypes.IntegerTypeToken;
 import dev.vladimir.cfecodemodule.tokens.primitivevalues.IntegerValueToken;
+import dev.vladimir.cfecodemodule.tokens.symbols.AssignmentToken;
 import dev.vladimir.cfecodemodule.tokens.symbols.SemicolonToken;
+import dev.vladimir.cfecodemodule.utils.calculatedvalue.CalculatedIntegerValue;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class InteractionWithVariableLineTest {
     @Test
@@ -45,16 +46,17 @@ class InteractionWithVariableLineTest {
                 SemicolonToken.class
         );
 
+        CalculatedIntegerValue calculatedIntegerValue = new CalculatedIntegerValue();
         assertTrue(
-                new InteractionWithVariableLine().isEqualsFor(inputTokens)
+                new InteractionWithVariableLine().isEqualsFor(inputTokens, calculatedIntegerValue)
         );
 
         assertTrue(
-                new InteractionWithVariableLine().isEqualsFor(inputTokens1)
+                new InteractionWithVariableLine().isEqualsFor(inputTokens1, calculatedIntegerValue)
         );
 
         assertTrue(
-                new InteractionWithVariableLine().isEqualsFor(inputTokens2)
+                new InteractionWithVariableLine().isEqualsFor(inputTokens2, calculatedIntegerValue)
         );
     }
 
