@@ -8,10 +8,13 @@ At the moment, the project is under active development. Below are already implem
 
 
 ```
-Число someVar = 15 ;
-Число someVar = 20 ;
-Число variable = 5 + someVar ;
-Число threeVar = variable - someVar + 10 ;
-Консоль threeVar ;
-Консоль 10 + 15 + 20 ;
+#Some commentary
+
+Число someInt = 15 ;
+
+Логический someBool = истина ;
+
+Число tempInt = someInt + 15 ;
+Консоль tempInt == 30 ;
+Консоль tempInt != 31 ;
 ```
