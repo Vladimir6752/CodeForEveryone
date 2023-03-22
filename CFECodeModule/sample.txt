@@ -1,7 +1,20 @@
 Число someInt = 15 ;
 
-Логический someBool = ложь ;
+Число [] ints ;
 
-Число tempInt = someInt + 15 ;
-Консоль tempInt == 30 && someBool ;
-Консоль истина && истина && ложь ;
+ints::добавитьЭл(someInt) ;
+ints::добавитьЭл(someInt) ;
+ints::добавитьЭл(someInt) ;
+ints::добавитьЭл(someInt) ;
+ints::добавитьЭл(someInt) ;
+
+Консоль ints ;
+# ints=[15, 15, 15, 15, 15]
+Консоль ints::получитьЭл(4) ;
+# 15
+Консоль ints::длина ;
+# 5
+
+# ints::добавитьЭл(someInt)
+# ints::получитьЭл(4)
+# ints::длина

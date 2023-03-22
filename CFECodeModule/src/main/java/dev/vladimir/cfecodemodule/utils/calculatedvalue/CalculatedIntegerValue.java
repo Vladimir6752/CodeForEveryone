@@ -101,4 +101,9 @@ public class CalculatedIntegerValue extends AbstractCalculatedValue {
 
         return -1;
     }
+
+    @Override
+    public String getType() {
+        return "Число";
+    }
 }

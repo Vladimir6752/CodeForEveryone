@@ -12,13 +12,10 @@ public class VariablesScope {
         
         if(variablesScope.containsKey(variableName)) {
             Variable foundedVariable = variablesScope.get(variableName);
-            if(variable.type().equals(foundedVariable.type())) {
-                variablesScope.put(variableName, variable);
-                return;
-            }
-            throw new IllegalStateException(
-                    String.format("Incompatible type when setting the value of a variable %s", variableName)
-            );
+            if(!variable.type().equals(foundedVariable.type()))
+                throw new IllegalStateException(
+                        String.format("Incompatible type when setting the value of a variable %s", variableName)
+                );
         }
         
         variablesScope.put(variableName, variable);
@@ -34,5 +31,28 @@ public class VariablesScope {
 
     public void clearScope() {
         variablesScope.clear();
+    }
+
+    public static void throwIfVariableIsNull(Variable variable, String variableName) {
+        if(variable == null) {
+            throw new IllegalStateException(
+                    String.format("Variable with name: '%s' was not found in the current scope", variableName)
+            );
+        }
+    }
+
+    public static void throwIfVariableIsNotNull(Variable variable) {
+        if(variable != null)
+            throw new IllegalStateException(
+                    String.format("Variable with name: '%s' already exists in the current scope", variable.name())
+            );
+    }
+
+    public static void throwIfTypeIncompatible(String expectedType, String actualType, String variableName) {
+        if(!actualType.equals(expectedType)) {
+            throw new IllegalStateException(
+                    String.format("Variable %s is %s, not %s", variableName, actualType, expectedType)
+            );
+        }
     }
 }

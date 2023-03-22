@@ -150,4 +150,9 @@ public class CalculatedBooleanValue extends AbstractCalculatedValue {
                ||
                VariableNameToken.class.isAssignableFrom(valueOrVariable);
     }
+
+    @Override
+    public String getType() {
+        return "Логический";
+    }
 }

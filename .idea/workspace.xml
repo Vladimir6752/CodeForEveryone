@@ -4,51 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="214176b2-19e0-4c4d-8fbd-07ed8cd38b42" name="Changes" comment="Boolean integration">
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/PrimitiveOperator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/bool/BooleanAndOperator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/bool/BooleanOrOperator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/bool/IntegerLessOperator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/bool/IntegerMoreOperator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/bool/ObjectEqualsOperator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/bool/ObjectNotEqualsOperator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/bool/PrimitiveBooleanOperator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitiveoperators/bool/BooleanAndOperatorToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitiveoperators/bool/BooleanOrOperatorToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitiveoperators/bool/ObjectEqualsOperatorToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitiveoperators/bool/ObjectLessOperatorToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitiveoperators/bool/ObjectMoreOperatorToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitiveoperators/bool/ObjectNotEqualsOperatorToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitiveoperators/bool/PrimitiveBooleanOperatorToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitiveoperators/integer/PrimitiveIntegerOperatorToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/calculatedvalue/AbstractCalculatedValue.java" afterDir="false" />
+    <list default="true" id="214176b2-19e0-4c4d-8fbd-07ed8cd38b42" name="Changes" comment="Boolean integration, refactoring">
+      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/IntegerArraysInteraction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/arrays/ArrayAddElementOperationToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/arrays/ArrayGetElementOperationToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/arrays/ArrayGetLengthOperationToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/arrays/ArrayIdentifierType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/arrays/PrimitiveArrayOperationToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/arrays/ArrayTokenModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/arrays/ArrayTokensHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/arrays/ParserArrayOperationTokens.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/linevariants/IntegerArraysInteractionTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/utils/arrays/ArrayTokensHandlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/utils/arrays/ParserArrayOperationTokensTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFECodeModule/sample.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/sample.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/InteractionWithVariableLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/InteractionWithVariableLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/LineVariant.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/LineVariant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/LoggerLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/LoggerLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/PrimitiveIntegerOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/integer/PrimitiveIntegerOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/binary/IntegerDivisionOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/integer/IntegerDivisionOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/binary/IntegerMinusOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/integer/IntegerMinusOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/binary/IntegerMultiplierOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/integer/IntegerMultiplierOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/binary/IntegerPlusOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/integer/IntegerPlusOperator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/parsing/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/parsing/Lexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/parsing/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/parsing/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitiveoperators/DivisionOperatorToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitiveoperators/integer/DivisionOperatorToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitiveoperators/IntegerOperatorToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitiveoperators/PrimitiveOperatorToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitiveoperators/MinusOperatorToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitiveoperators/integer/MinusOperatorToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitiveoperators/MultiplierOperatorToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitiveoperators/integer/MultiplierOperatorToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitiveoperators/PlusOperatorToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitiveoperators/integer/PlusOperatorToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/CalculatedBooleanValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/calculatedvalue/CalculatedBooleanValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/CalculatedValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/calculatedvalue/CalculatedIntegerValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/linevariants/InteractionWithVariableLineTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/linevariants/InteractionWithVariableLineTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/another/VariableNameToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/another/VariableNameToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitivevalues/IntegerValueToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitivevalues/IntegerValueToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/VariablesScope.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/VariablesScope.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/calculatedvalue/AbstractCalculatedValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/calculatedvalue/AbstractCalculatedValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/calculatedvalue/CalculatedBooleanValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/calculatedvalue/CalculatedBooleanValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/calculatedvalue/CalculatedIntegerValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/calculatedvalue/CalculatedIntegerValue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/linevariants/LoggerLineTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/linevariants/LoggerLineTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/parsing/LexerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/parsing/LexerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/parsing/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/parsing/ParserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/utils/CalculatedBooleanValueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/utils/CalculatedBooleanValueTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/utils/CalculatedIntegerValueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/utils/CalculatedIntegerValueTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/utils/VariablesScopeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/utils/VariablesScopeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,8 +43,8 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -142,11 +122,13 @@
       <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="dev.vladimir.cfecodemodule.utils.arrays" />
       <recent name="dev.vladimir.cfecodemodule.operators" />
       <recent name="dev.vladimir.cfecodemodule.tokens.operators" />
       <recent name="dev.vladimir.cfecodemodule.baseclasses" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="dev.vladimir.cfecodemodule.utils.arrays" />
       <recent name="dev.vladimir.cfecodemodule.utils" />
       <recent name="dev.vladimir.cfecodemodule.linevariants" />
       <recent name="dev.vladimir.cfecodemodule.parsing" />
@@ -160,19 +142,6 @@
     </option>
   </component>
   <component name="RunManager" selected="JUnit.All tests">
-    <configuration name="CFEFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dev.vladimir.cfecodemodule.baseclasses.CFEFile" />
-      <module name="CFECodeModule" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="dev.vladimir.cfecodemodule.baseclasses.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="All tests" type="JUnit" factoryName="JUnit">
       <module name="CFECodeModule" />
       <option name="PACKAGE_NAME" value="" />
@@ -184,65 +153,80 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CalculatedBooleanValueTest.calculateTokens_correctly_work" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ArrayTokensHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CFECodeModule" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dev.vladimir.cfecodemodule.utils.*" />
+          <option name="PATTERN" value="dev.vladimir.cfecodemodule.utils.arrays.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="dev.vladimir.cfecodemodule.utils" />
-      <option name="MAIN_CLASS_NAME" value="dev.vladimir.cfecodemodule.utils.CalculatedBooleanValueTest" />
-      <option name="METHOD_NAME" value="calculateTokens_correctly_work" />
+      <option name="PACKAGE_NAME" value="dev.vladimir.cfecodemodule.utils.arrays" />
+      <option name="MAIN_CLASS_NAME" value="dev.vladimir.cfecodemodule.utils.arrays.ArrayTokensHandlerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ArrayTokensHandlerTest.arrayToString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CFECodeModule" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dev.vladimir.cfecodemodule.utils.arrays.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dev.vladimir.cfecodemodule.utils.arrays" />
+      <option name="MAIN_CLASS_NAME" value="dev.vladimir.cfecodemodule.utils.arrays.ArrayTokensHandlerTest" />
+      <option name="METHOD_NAME" value="arrayToString" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CalculatedBooleanValueTest.calculatedValue_correctly_calculated_with_integers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ArrayTokensHandlerTest.getArrayLengthToken" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CFECodeModule" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dev.vladimir.cfecodemodule.utils.*" />
+          <option name="PATTERN" value="dev.vladimir.cfecodemodule.utils.arrays.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="dev.vladimir.cfecodemodule.utils" />
-      <option name="MAIN_CLASS_NAME" value="dev.vladimir.cfecodemodule.utils.CalculatedBooleanValueTest" />
-      <option name="METHOD_NAME" value="calculatedValue_correctly_calculated_with_integers" />
+      <option name="PACKAGE_NAME" value="dev.vladimir.cfecodemodule.utils.arrays" />
+      <option name="MAIN_CLASS_NAME" value="dev.vladimir.cfecodemodule.utils.arrays.ArrayTokensHandlerTest" />
+      <option name="METHOD_NAME" value="getArrayLengthToken" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CalculatedBooleanValueTest.setValuesInsteadVariables_correctly_work" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IntegerArraysInteractionTest.addingElement_correctly_work" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CFECodeModule" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dev.vladimir.cfecodemodule.utils.*" />
+          <option name="PATTERN" value="dev.vladimir.cfecodemodule.linevariants.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="dev.vladimir.cfecodemodule.utils" />
-      <option name="MAIN_CLASS_NAME" value="dev.vladimir.cfecodemodule.utils.CalculatedBooleanValueTest" />
-      <option name="METHOD_NAME" value="setValuesInsteadVariables_correctly_work" />
+      <option name="PACKAGE_NAME" value="dev.vladimir.cfecodemodule.linevariants" />
+      <option name="MAIN_CLASS_NAME" value="dev.vladimir.cfecodemodule.linevariants.IntegerArraysInteractionTest" />
+      <option name="METHOD_NAME" value="addingElement_correctly_work" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ParserTest.creating_integer_and_boolean_variables" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ParserArrayOperationTokensTest.parseOperationTokenValue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CFECodeModule" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dev.vladimir.cfecodemodule.parsing.*" />
+          <option name="PATTERN" value="dev.vladimir.cfecodemodule.utils.arrays.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="dev.vladimir.cfecodemodule.parsing" />
-      <option name="MAIN_CLASS_NAME" value="dev.vladimir.cfecodemodule.parsing.ParserTest" />
-      <option name="METHOD_NAME" value="creating_integer_and_boolean_variables" />
+      <option name="PACKAGE_NAME" value="dev.vladimir.cfecodemodule.utils.arrays" />
+      <option name="MAIN_CLASS_NAME" value="dev.vladimir.cfecodemodule.utils.arrays.ParserArrayOperationTokensTest" />
+      <option name="METHOD_NAME" value="parseOperationTokenValue" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -277,12 +261,12 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.CFEFile" />
       <item itemvalue="JUnit.All tests" />
-      <item itemvalue="JUnit.CalculatedBooleanValueTest.calculatedValue_correctly_calculated_with_integers" />
-      <item itemvalue="JUnit.CalculatedBooleanValueTest.calculateTokens_correctly_work" />
-      <item itemvalue="JUnit.CalculatedBooleanValueTest.setValuesInsteadVariables_correctly_work" />
-      <item itemvalue="JUnit.ParserTest.creating_integer_and_boolean_variables" />
+      <item itemvalue="JUnit.ArrayTokensHandlerTest" />
+      <item itemvalue="JUnit.ArrayTokensHandlerTest.arrayToString" />
+      <item itemvalue="JUnit.ArrayTokensHandlerTest.getArrayLengthToken" />
+      <item itemvalue="JUnit.ParserArrayOperationTokensTest.parseOperationTokenValue" />
+      <item itemvalue="JUnit.IntegerArraysInteractionTest.addingElement_correctly_work" />
       <item itemvalue="Spring Boot.CodeRunServiceApplication" />
       <item itemvalue="Spring Boot.CodeServiceApplication" />
       <item itemvalue="Spring Boot.ProjectServiceApplication" />
@@ -290,11 +274,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CalculatedBooleanValueTest.calculatedValue_correctly_calculated_with_integers" />
-        <item itemvalue="JUnit.CalculatedBooleanValueTest.calculateTokens_correctly_work" />
-        <item itemvalue="JUnit.CalculatedBooleanValueTest.setValuesInsteadVariables_correctly_work" />
-        <item itemvalue="Application.CFEFile" />
-        <item itemvalue="JUnit.ParserTest.creating_integer_and_boolean_variables" />
+        <item itemvalue="JUnit.ArrayTokensHandlerTest" />
+        <item itemvalue="JUnit.ArrayTokensHandlerTest.arrayToString" />
+        <item itemvalue="JUnit.ArrayTokensHandlerTest.getArrayLengthToken" />
+        <item itemvalue="JUnit.ParserArrayOperationTokensTest.parseOperationTokenValue" />
+        <item itemvalue="JUnit.IntegerArraysInteractionTest.addingElement_correctly_work" />
       </list>
     </recent_temporary>
   </component>
@@ -331,7 +315,13 @@
       <workItem from="1679207258666" duration="8634000" />
       <workItem from="1679224171463" duration="15043000" />
       <workItem from="1679240019517" duration="2426000" />
-      <workItem from="1679280689552" duration="3030000" />
+      <workItem from="1679280689552" duration="4912000" />
+      <workItem from="1679321800164" duration="3576000" />
+      <workItem from="1679367629179" duration="5588000" />
+      <workItem from="1679403054587" duration="4166000" />
+      <workItem from="1679412658445" duration="1681000" />
+      <workItem from="1679453260679" duration="5360000" />
+      <workItem from="1679488780598" duration="6483000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1678794148683</created>
@@ -347,7 +337,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679065240962</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Boolean integration, refactoring">
+      <created>1679283924310</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1679283924310</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -367,7 +364,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit" />
     <MESSAGE value="Boolean integration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Boolean integration" />
+    <MESSAGE value="Boolean integration, refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Boolean integration, refactoring" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -376,15 +374,6 @@
           <properties class="java.lang.ClassCastException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/calculatedvalue/CalculatedBooleanValue.java</url>
-          <line>74</line>
-          <properties class="dev.vladimir.cfecodemodule.utils.calculatedvalue.CalculatedBooleanValue" method="setFirstBooleanValueInsteadIntegers">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -398,12 +387,18 @@
     <SUITE FILE_PATH="coverage/CodeForEveryoneServer$CFEFile.ic" NAME="CFEFile Coverage Results" MODIFIED="1678520574257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>dev.vladimir.cfecodemodule.baseclasses.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/CodeForEveryoneServer$LoggerLineTest_isEqualsFor_return_false.ic" NAME="LoggerLineTest.isEqualsFor_return_false Coverage Results" MODIFIED="1679284395848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>dev.vladimir.cfecodemodule.linevariants.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/CodeForEveryoneServer$ParserArrayOperationTokensTest_parseOperationTokenValue.ic" NAME="ParserArrayOperationTokensTest.parseOperationTokenValue Coverage Results" MODIFIED="1679489859687" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>dev.vladimir.cfecodemodule.utils.arrays.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/CodeForEveryoneServer$LexerTest.ic" NAME="LexerTest Coverage Results" MODIFIED="1678612914030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>dev.vladimir.cfecodemodule.parsing.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/CodeForEveryoneServer$VariablesScopeTest_editVariableInScope_throw_IllegalStateException.ic" NAME="VariablesScopeTest.editVariableInScope_throw_IllegalStateException Coverage Results" MODIFIED="1678600266290" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>dev.vladimir.cfecodemodule.utils.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/CodeForEveryoneServer$All_tests.ic" NAME="All tests Coverage Results" MODIFIED="1679226496775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/CodeForEveryoneServer$All_tests.ic" NAME="All tests Coverage Results" MODIFIED="1679497482499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

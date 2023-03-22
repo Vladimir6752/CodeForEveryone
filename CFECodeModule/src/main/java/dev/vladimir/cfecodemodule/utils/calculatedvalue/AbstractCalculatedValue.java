@@ -46,4 +46,6 @@ public abstract class AbstractCalculatedValue {
         }
         return result;
     }
+
+    public abstract String getType();
 }

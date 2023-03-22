@@ -7,6 +7,7 @@ import dev.vladimir.cfecodemodule.tokens.symbols.AssignmentToken;
 import dev.vladimir.cfecodemodule.tokens.symbols.SemicolonToken;
 import dev.vladimir.cfecodemodule.utils.CommonScope;
 import dev.vladimir.cfecodemodule.utils.Variable;
+import dev.vladimir.cfecodemodule.utils.VariablesScope;
 import dev.vladimir.cfecodemodule.utils.calculatedvalue.AbstractCalculatedValue;
 
 import java.util.ArrayList;
@@ -17,12 +18,9 @@ public class InteractionWithVariableLine extends LineVariant {
         String variableType = lineTokens.get(0).getValue();
         String variableName = lineTokens.get(1).getValue();
 
-        Variable settingVariable = commonScope.getVariablesScope().getVariable(variableName);
-
-        if(settingVariable != null)
-            throw new IllegalStateException(
-                    String.format("Variable with name: '%s' already exists in the current scope", variableName)
-            );
+        VariablesScope.throwIfVariableIsNotNull(
+                commonScope.getVariablesScope().getVariable(variableName)
+        );
 
         Variable variable = new Variable(variableName, variableType, String.valueOf(0));
         commonScope.getVariablesScope().setVariableInScope(variable);
@@ -36,12 +34,9 @@ public class InteractionWithVariableLine extends LineVariant {
                 lineTokens.subList(3, lineTokens.size() - 1), commonScope
         );
 
-        Variable settingVariable = commonScope.getVariablesScope().getVariable(variableName);
-
-        if(settingVariable != null)
-            throw new IllegalStateException(
-                    String.format("Variable with name: '%s' already exists in the current scope", variableName)
-            );
+        VariablesScope.throwIfVariableIsNotNull(
+                commonScope.getVariablesScope().getVariable(variableName)
+        );
 
         Variable variable = new Variable(
                 variableName,
@@ -52,21 +47,18 @@ public class InteractionWithVariableLine extends LineVariant {
     };
 
     private final LineAction settingValueInVariableAction = (List<? extends Token> lineTokens) -> {
-        String expectedVariableName = lineTokens.get(0).getValue();
+        String settingVariableName = lineTokens.get(0).getValue();
 
         List<? extends Token> inputTokens = calculatedValue.setValuesInsteadVariables(
                 lineTokens.subList(2, lineTokens.size() - 1), commonScope
         );
 
-        Variable settingVariable = commonScope.getVariablesScope().getVariable(expectedVariableName);
-
-        if(settingVariable == null)
-            throw new IllegalStateException(
-                    String.format("Variable with name: '%s' was not found in the current scope", expectedVariableName)
-            );
+        Variable settingVariable = commonScope.getVariablesScope().getVariable(settingVariableName);
+        VariablesScope.throwIfVariableIsNull(settingVariable, settingVariableName);
+        VariablesScope.throwIfTypeIncompatible(settingVariable.type(), calculatedValue.getType(), settingVariable.name());
 
         Variable variable = new Variable(
-                expectedVariableName,
+                settingVariableName,
                 settingVariable.type(),
                 calculatedValue.calculateTokens(inputTokens).toString()
         );
@@ -111,7 +103,11 @@ public class InteractionWithVariableLine extends LineVariant {
     }
 
     private boolean isCreatingVariableWithoutValue(List<Class<? extends Token>> lineWithoutSemicolon) {
-        return lineWithoutSemicolon.size() == 2 && lineWithoutSemicolon.get(1).equals(VariableNameToken.class);
+        return lineWithoutSemicolon.size() == 2
+               &&
+               PrimitiveTypeToken.class.isAssignableFrom(lineWithoutSemicolon.get(0))
+               &&
+               lineWithoutSemicolon.get(1).equals(VariableNameToken.class);
     }
 
     private boolean isSettingVariableValueLine(List<Class<? extends Token>> inputTokenClasses, Class<? extends Token> firstTokenClass) {

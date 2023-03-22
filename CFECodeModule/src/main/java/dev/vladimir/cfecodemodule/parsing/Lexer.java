@@ -3,6 +3,10 @@ package dev.vladimir.cfecodemodule.parsing;
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.tokens.another.LoggerToken;
 import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
+import dev.vladimir.cfecodemodule.tokens.arrays.ArrayAddElementOperationToken;
+import dev.vladimir.cfecodemodule.tokens.arrays.ArrayGetElementOperationToken;
+import dev.vladimir.cfecodemodule.tokens.arrays.ArrayGetLengthOperationToken;
+import dev.vladimir.cfecodemodule.tokens.arrays.ArrayIdentifierType;
 import dev.vladimir.cfecodemodule.tokens.primitiveoperators.bool.*;
 import dev.vladimir.cfecodemodule.tokens.primitiveoperators.integer.DivisionOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitiveoperators.integer.MinusOperatorToken;
@@ -25,9 +29,14 @@ public class Lexer {
     private static final List<? extends Token> ALL_TOKENS = Arrays.asList(
             new IntegerTypeToken(),
             new BooleanTypeToken(),
+            new ArrayIdentifierType(),
 
             new IntegerValueToken(),
             new BooleanValueToken(),
+
+            new ArrayGetElementOperationToken(),
+            new ArrayAddElementOperationToken(),
+            new ArrayGetLengthOperationToken(),
 
             new BooleanAndOperatorToken(),
             new BooleanOrOperatorToken(),

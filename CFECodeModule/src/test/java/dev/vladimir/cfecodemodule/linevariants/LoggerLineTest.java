@@ -42,9 +42,19 @@ class LoggerLineTest {
                 PlusOperatorToken.class,
                 PrimitiveValueToken.class
         );
+        List<Class<? extends Token>> tokenClasses2 = List.of(
+                LoggerToken.class,
+                VariableNameToken.class,
+                PlusOperatorToken.class,
+                IntegerValueToken.class
+        );
 
         assertFalse(
                 new LoggerLine().isEqualsFor(tokenClasses)
+        );
+
+        assertFalse(
+                new LoggerLine().isEqualsFor(tokenClasses2)
         );
     }
 }

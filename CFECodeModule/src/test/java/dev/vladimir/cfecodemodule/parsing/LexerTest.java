@@ -2,6 +2,10 @@ package dev.vladimir.cfecodemodule.parsing;
 
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
+import dev.vladimir.cfecodemodule.tokens.arrays.ArrayAddElementOperationToken;
+import dev.vladimir.cfecodemodule.tokens.arrays.ArrayGetElementOperationToken;
+import dev.vladimir.cfecodemodule.tokens.arrays.ArrayGetLengthOperationToken;
+import dev.vladimir.cfecodemodule.tokens.arrays.ArrayIdentifierType;
 import dev.vladimir.cfecodemodule.tokens.primitiveoperators.integer.DivisionOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitiveoperators.integer.MultiplierOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.symbols.AssignmentToken;
@@ -53,6 +57,35 @@ class LexerTest {
             assertEquals(expectedTokens.get(i).getLine(), actualTokens.get(i).getLine());
             assertEquals(expectedTokens.get(i).getValue(), actualTokens.get(i).getValue());
             assertEquals(expectedTokens.get(i).getName(), actualTokens.get(i).getName());
+        }
+    }
+
+    @Test
+    void analyze_arrays_operations() {
+        Lexer lexer = new Lexer("""
+                []
+                someIntArray::получитьЭл(someVar)
+                someIntArray::добавитьЭл(someVar)
+                someIntArray::получитьЭл(5)
+                someIntArray::добавитьЭл(5)
+                someIntArray::длина
+                """);
+
+        List<List<? extends Token>> expectedTokens = Arrays.asList(
+                List.of(new ArrayIdentifierType()),
+                List.of(new ArrayGetElementOperationToken()),
+                List.of(new ArrayAddElementOperationToken()),
+                List.of(new ArrayGetElementOperationToken()),
+                List.of(new ArrayAddElementOperationToken()),
+                List.of(new ArrayGetLengthOperationToken())
+        );
+
+        List<List<? extends Token>> analyze = lexer.analyze();
+        for (int i = 0; i < analyze.size(); i++) {
+            List<? extends Token> tokens = analyze.get(i);
+            assertEquals(1, tokens.size());
+
+            assertEquals(expectedTokens.get(i).get(0).getClass(), tokens.get(0).getClass());
         }
     }
 
