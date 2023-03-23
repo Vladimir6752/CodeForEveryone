@@ -173,7 +173,7 @@ class CalculatedIntegerValueTest {
 
         IllegalStateException illegalStateException = assertThrows(
                 IllegalStateException.class,
-                () -> new CalculatedIntegerValue().setValuesInsteadVariables(tokens, new CommonScope())
+                () -> new CalculatedIntegerValue().setValuesInsteadStatements(tokens, new CommonScope())
         );
 
         assertEquals(

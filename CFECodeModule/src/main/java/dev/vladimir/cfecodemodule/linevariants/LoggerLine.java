@@ -2,8 +2,11 @@ package dev.vladimir.cfecodemodule.linevariants;
 
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.tokens.another.LoggerToken;
+import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
 import dev.vladimir.cfecodemodule.tokens.symbols.SemicolonToken;
 import dev.vladimir.cfecodemodule.utils.CommonScope;
+import dev.vladimir.cfecodemodule.utils.Variable;
+import dev.vladimir.cfecodemodule.utils.arrays.ArrayTokensHandler;
 import dev.vladimir.cfecodemodule.utils.calculatedvalue.AbstractCalculatedValue;
 
 import java.util.List;
@@ -12,7 +15,14 @@ public class LoggerLine extends LineVariant {
     public LoggerLine(CommonScope commonScope, List<? extends Token> lineTokens, AbstractCalculatedValue calculatedValue) {
         super(commonScope, lineTokens, calculatedValue);
         currentLineAction = lineTokens1 -> {
-            List<? extends Token> inputTokens = calculatedValue.setValuesInsteadVariables(
+            if (isArrayLogging(lineTokens1.subList(0, lineTokens1.size() - 1))) {
+                System.out.println(
+                        ArrayTokensHandler.arrayToString(lineTokens1.get(1).getValue(), commonScope)
+                );
+                return;
+            }
+
+            List<? extends Token> inputTokens = calculatedValue.setValuesInsteadStatements(
                     lineTokens1.subList(1, lineTokens1.size() - 1), commonScope
             );
 
@@ -20,6 +30,23 @@ public class LoggerLine extends LineVariant {
                     calculatedValue.calculateTokens(inputTokens)
             );
         };
+    }
+
+    private boolean isArrayLogging(List<? extends Token> lineTokens1) {
+        if(lineTokens1.size() != 2) {
+            return false;
+        }
+
+        Token expectedVariableName = lineTokens1.get(1);
+        if(expectedVariableName.getClass().equals(VariableNameToken.class)){
+            Variable variable = commonScope.getVariablesScope().getVariable(expectedVariableName.getValue());
+
+            if(variable.type().equals("Число[]")) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public LoggerLine() {

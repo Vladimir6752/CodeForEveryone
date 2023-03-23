@@ -2,6 +2,10 @@ package dev.vladimir.cfecodemodule.parsing;
 
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
+import dev.vladimir.cfecodemodule.tokens.arrays.ArrayAddElementOperationToken;
+import dev.vladimir.cfecodemodule.tokens.arrays.ArrayGetElementOperationToken;
+import dev.vladimir.cfecodemodule.tokens.arrays.ArrayIdentifierType;
+import dev.vladimir.cfecodemodule.tokens.primitiveoperators.integer.MultiplierOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitiveoperators.integer.PlusOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitivetypes.BooleanTypeToken;
 import dev.vladimir.cfecodemodule.tokens.primitivetypes.IntegerTypeToken;
@@ -326,6 +330,89 @@ class ParserTest {
                         Map.entry("someBooleanVariable",booleanVariable)
                 ),
                 beginingCommonScope.getVariablesScope().getAllVariableEntry()
+        );
+    }
+
+    @Test
+    void array_statements_correctly_work() {
+        CommonScope commonScope = new CommonScope();
+
+        List<List<? extends Token>> beginningTokens = List.of(
+                List.of(
+                        new IntegerTypeToken(),
+                        new VariableNameToken("intIndex"),
+                        new AssignmentToken(),
+                        new IntegerValueToken(3),
+                        new SemicolonToken()
+                ),
+                List.of(
+                        new IntegerTypeToken(),
+                        new ArrayIdentifierType(),
+                        new VariableNameToken("someIntArray"),
+                        new SemicolonToken()
+                ),
+                List.of(
+                        new ArrayAddElementOperationToken("someIntArray::добавитьЭл(1)"),
+                        new SemicolonToken()
+                ),
+                List.of(
+                        new ArrayAddElementOperationToken("someIntArray::добавитьЭл(2)"),
+                        new SemicolonToken()
+                ),
+                List.of(
+                        new ArrayAddElementOperationToken("someIntArray::добавитьЭл(intIndex)"),
+                        new SemicolonToken()
+                ),
+                List.of(
+                        new ArrayAddElementOperationToken("someIntArray::добавитьЭл(4)"),
+                        new SemicolonToken()
+                ),
+                List.of(
+                        new ArrayAddElementOperationToken("someIntArray::добавитьЭл(5)"),
+                        new SemicolonToken()
+                ),
+                List.of(
+                        new IntegerTypeToken(),
+                        new VariableNameToken("someResult"),
+                        new AssignmentToken(),
+                        new ArrayGetElementOperationToken("someIntArray::получитьЭл(intIndex)"),
+                        new SemicolonToken()
+                )
+        );
+
+        new Parser(beginningTokens, commonScope).beginParse();
+
+        assertEquals(
+                3,
+                commonScope.getVariablesScope().getAllVariableEntry().size()
+        );
+
+        assertEquals(
+                List.of(1, 2, 3, 4, 5),
+                commonScope.getVariablesScope().getVariable("someIntArray").value()
+        );
+
+        assertEquals(
+                String.valueOf(4),
+                commonScope.getVariablesScope().getVariable("someResult").value()
+        );
+
+        List<List<? extends Token>> tokens2 = List.of(
+                List.of(
+                        new VariableNameToken("someResult"),
+                        new AssignmentToken(),
+                        new ArrayGetElementOperationToken("someIntArray::получитьЭл(2)"),
+                        new MultiplierOperatorToken(),
+                        new IntegerValueToken(5),
+                        new SemicolonToken()
+                )
+        );
+
+        new Parser(tokens2, commonScope).beginParse();
+
+        assertEquals(
+                String.valueOf(15),
+                commonScope.getVariablesScope().getVariable("someResult").value()
         );
     }
 }

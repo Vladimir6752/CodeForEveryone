@@ -11,6 +11,7 @@ import dev.vladimir.cfecodemodule.utils.Variable;
 import dev.vladimir.cfecodemodule.utils.VariablesScope;
 import dev.vladimir.cfecodemodule.utils.arrays.ArrayTokenModel;
 import dev.vladimir.cfecodemodule.utils.arrays.ParserArrayOperationTokens;
+import dev.vladimir.cfecodemodule.utils.calculatedvalue.AbstractCalculatedValue;
 import dev.vladimir.cfecodemodule.utils.calculatedvalue.CalculatedIntegerValue;
 
 import java.util.ArrayList;
@@ -51,10 +52,14 @@ public class IntegerArraysInteraction extends LineVariant {
             VariablesScope.throwIfTypeIncompatible("Число", addedVariable.type(), addedVariable.name());
 
             ((ArrayList<Integer>) settingArrayVariable.value()).add(
-                    (Integer) addedVariable.value()
+                    Integer.parseInt(addedVariable.value().toString())
             );
         }
     };
+
+    public IntegerArraysInteraction(CommonScope commonScope, List<? extends Token> lineTokens, AbstractCalculatedValue ignored) {
+        super(commonScope, lineTokens, new CalculatedIntegerValue());
+    }
 
     public IntegerArraysInteraction(CommonScope commonScope, List<? extends Token> lineTokens) {
         super(commonScope, lineTokens, new CalculatedIntegerValue());

@@ -307,7 +307,7 @@ class CalculatedBooleanValueTest {
                 new VariableNameToken("someNewExistVariable")
         );
 
-        List<? extends Token> actualTokens = new CalculatedBooleanValue().setValuesInsteadVariables(tokensWithVariables, commonScope);
+        List<? extends Token> actualTokens = new CalculatedBooleanValue().setValuesInsteadStatements(tokensWithVariables, commonScope);
 
         List<Token> expectedTokens = List.of(
                 new IntegerValueToken(5),
@@ -386,7 +386,7 @@ class CalculatedBooleanValueTest {
 
         IllegalStateException illegalStateException = assertThrows(
                 IllegalStateException.class,
-                () -> new CalculatedBooleanValue().setValuesInsteadVariables(tokens, new CommonScope())
+                () -> new CalculatedBooleanValue().setValuesInsteadStatements(tokens, new CommonScope())
         );
 
         assertEquals(

@@ -30,7 +30,7 @@ public class InteractionWithVariableLine extends LineVariant {
         String variableType = lineTokens.get(0).getValue();
         String variableName = lineTokens.get(1).getValue();
 
-        List<? extends Token> inputTokens = calculatedValue.setValuesInsteadVariables(
+        List<? extends Token> inputTokens = calculatedValue.setValuesInsteadStatements(
                 lineTokens.subList(3, lineTokens.size() - 1), commonScope
         );
 
@@ -49,7 +49,7 @@ public class InteractionWithVariableLine extends LineVariant {
     private final LineAction settingValueInVariableAction = (List<? extends Token> lineTokens) -> {
         String settingVariableName = lineTokens.get(0).getValue();
 
-        List<? extends Token> inputTokens = calculatedValue.setValuesInsteadVariables(
+        List<? extends Token> inputTokens = calculatedValue.setValuesInsteadStatements(
                 lineTokens.subList(2, lineTokens.size() - 1), commonScope
         );
 

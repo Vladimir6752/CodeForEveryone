@@ -1,5 +1,6 @@
 package dev.vladimir.cfecodemodule.parsing;
 
+import dev.vladimir.cfecodemodule.linevariants.IntegerArraysInteraction;
 import dev.vladimir.cfecodemodule.linevariants.InteractionWithVariableLine;
 import dev.vladimir.cfecodemodule.linevariants.LineVariant;
 import dev.vladimir.cfecodemodule.linevariants.LoggerLine;
@@ -21,7 +22,8 @@ public class Parser {
     private final CommonScope commonScope;
     private final List<Class<? extends LineVariant>> variantsTokenLines = List.of(
             LoggerLine.class,
-            InteractionWithVariableLine.class
+            InteractionWithVariableLine.class,
+            IntegerArraysInteraction.class
     );
 
     public Parser(List<List<? extends Token>> tokenizeLines, CommonScope commonScope) {

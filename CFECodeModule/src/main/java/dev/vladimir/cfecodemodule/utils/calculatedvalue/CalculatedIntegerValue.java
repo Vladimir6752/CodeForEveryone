@@ -2,6 +2,7 @@ package dev.vladimir.cfecodemodule.utils.calculatedvalue;
 
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
+import dev.vladimir.cfecodemodule.tokens.arrays.PrimitiveArrayOperationToken;
 import dev.vladimir.cfecodemodule.tokens.primitiveoperators.PrimitiveOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitiveoperators.integer.PrimitiveIntegerOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitivevalues.IntegerValueToken;
@@ -40,19 +41,21 @@ public class CalculatedIntegerValue extends AbstractCalculatedValue {
 
     @Override
     public Object calculateTokens(List<? extends Token> inputTokens) {
-        List<? extends Token> values = inputTokens;
+        //List<? extends Token> values = inputTokens;
 
-        while (values.size() != 1) {
-            values = calculateImportantValue(values);
+        while (inputTokens.size() != 1) {
+            inputTokens = calculateImportantValue(inputTokens);
         }
 
-        return Integer.parseInt(values.get(0).getValue());
+        return Integer.parseInt(inputTokens.get(0).getValue());
     }
 
     private static boolean isIntegerVariableOrValue(Class<? extends Token> valueOrVariable) {
         return IntegerValueToken.class.isAssignableFrom(valueOrVariable)
                ||
-               VariableNameToken.class.isAssignableFrom(valueOrVariable);
+               VariableNameToken.class.isAssignableFrom(valueOrVariable)
+               ||
+               PrimitiveArrayOperationToken.class.isAssignableFrom(valueOrVariable);
     }
 
     private List<? extends Token> calculateImportantValue(List<? extends Token> values) {

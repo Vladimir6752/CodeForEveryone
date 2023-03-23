@@ -57,7 +57,7 @@ public class ArrayTokensHandler {
             VariablesScope.throwIfVariableIsNull(getterVariable, string);
             VariablesScope.throwIfTypeIncompatible("Число", getterVariable.type(), getterVariable.name());
 
-            calledIndex = (Integer) getterVariable.value();
+            calledIndex = Integer.parseInt(getterVariable.value().toString());
         }
 
         if (calledIndex < 0 || calledIndex >= targetArray.size())
