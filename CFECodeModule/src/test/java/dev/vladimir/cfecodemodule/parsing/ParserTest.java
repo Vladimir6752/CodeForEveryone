@@ -281,7 +281,7 @@ class ParserTest {
         );
 
         assertEquals(
-                "Variable with name: 'someNotExistVariableName' was not found in the current scope",
+                "Variable with name: 'someNotExistVariableName' in line 1 was not found in the current scope",
                 illegalStateException.getMessage()
         );
     }

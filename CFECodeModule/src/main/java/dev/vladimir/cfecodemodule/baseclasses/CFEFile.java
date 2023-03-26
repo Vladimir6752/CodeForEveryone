@@ -10,12 +10,16 @@ import java.io.FileReader;
 import java.util.List;
 
 public class CFEFile {
-    private static final CommonScope COMMON_SCOPE = new CommonScope();
+    public final CommonScope commonScope = new CommonScope();
 
     public static void main(String[] args) {
-        List<List<? extends Token>> tokenizeLines = new Lexer(getScript()).analyze();
+        new CFEFile(getScript());
+    }
 
-        new Parser(tokenizeLines, COMMON_SCOPE).beginParse();
+    public CFEFile(String script) {
+        List<List<? extends Token>> tokenizeLines = new Lexer(script).analyze();
+
+        new Parser(tokenizeLines, commonScope).beginParse();
     }
 
     private static String getScript() {

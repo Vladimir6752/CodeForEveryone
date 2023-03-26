@@ -40,7 +40,7 @@ public class IntegerArraysInteraction extends LineVariant {
 
         Variable settingArrayVariable = commonScope.getVariablesScope().getVariable(arrayVariableName);
 
-        VariablesScope.throwIfVariableIsNull(settingArrayVariable, arrayVariableName);
+        VariablesScope.throwIfVariableIsNull(settingArrayVariable, arrayVariableName, lineTokens.get(0).getLine());
         VariablesScope.throwIfTypeIncompatible("Число[]", settingArrayVariable.type(), arrayVariableName);
 
         if(arrayTokenModel.addedOrGetterElement() instanceof Integer integer)
@@ -48,7 +48,7 @@ public class IntegerArraysInteraction extends LineVariant {
         else if(arrayTokenModel.addedOrGetterElement() instanceof String string) {
             Variable addedVariable = commonScope.getVariablesScope().getVariable(string);
 
-            VariablesScope.throwIfVariableIsNull(addedVariable, string);
+            VariablesScope.throwIfVariableIsNull(addedVariable, string, lineTokens.get(0).getLine());
             VariablesScope.throwIfTypeIncompatible("Число", addedVariable.type(), addedVariable.name());
 
             ((ArrayList<Integer>) settingArrayVariable.value()).add(

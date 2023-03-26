@@ -54,7 +54,7 @@ public class InteractionWithVariableLine extends LineVariant {
         );
 
         Variable settingVariable = commonScope.getVariablesScope().getVariable(settingVariableName);
-        VariablesScope.throwIfVariableIsNull(settingVariable, settingVariableName);
+        VariablesScope.throwIfVariableIsNull(settingVariable, settingVariableName, lineTokens.get(0).getLine());
         VariablesScope.throwIfTypeIncompatible(settingVariable.type(), calculatedValue.getType(), settingVariable.name());
 
         Variable variable = new Variable(
@@ -114,17 +114,12 @@ public class InteractionWithVariableLine extends LineVariant {
         if (!VariableNameToken.class.isAssignableFrom(firstTokenClass))
             return false;
 
-        ArrayList<Class<? extends Token>> variablePart = new ArrayList<>(
-                // переменнаяОдин =
-                inputTokenClasses.subList(0, 2)
-        );
         ArrayList<Class<? extends Token>> assignmentValuePart = new ArrayList<>(
                 // 2 + переменнаяДва
                 inputTokenClasses.subList(2, inputTokenClasses.size())
         );
 
-        Class<? extends Token> expectedAssignmentToken = variablePart.get(1);
-        if (!expectedAssignmentToken.equals(AssignmentToken.class)) return false;
+        if (!inputTokenClasses.get(1).equals(AssignmentToken.class)) return false;
 
         return calculatedValue.isCorrectValueFor(assignmentValuePart);
     }
@@ -133,17 +128,12 @@ public class InteractionWithVariableLine extends LineVariant {
         if (!PrimitiveTypeToken.class.isAssignableFrom(firstTokenClass))
             return false;
 
-        ArrayList<Class<? extends Token>> variablePart = new ArrayList<>(
-                // Тип переменнаяОдин =
-                inputTokenClasses.subList(0, 3)
-        );
         ArrayList<Class<? extends Token>> assignmentValuePart = new ArrayList<>(
                 // 2 + переменнаяДва
                 inputTokenClasses.subList(3, inputTokenClasses.size())
         );
 
-        Class<? extends Token> expectedAssignmentToken = variablePart.get(2);
-        if (!expectedAssignmentToken.equals(AssignmentToken.class)) return false;
+        if (!inputTokenClasses.get(2).equals(AssignmentToken.class)) return false;
 
         return calculatedValue.isCorrectValueFor(assignmentValuePart);
     }

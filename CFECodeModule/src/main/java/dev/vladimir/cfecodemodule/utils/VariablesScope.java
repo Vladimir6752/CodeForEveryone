@@ -1,24 +1,29 @@
 package dev.vladimir.cfecodemodule.utils;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class VariablesScope {
     private final Map<String, Variable> variablesScope = new HashMap<>();
 
+    private List<String> lastAddedVariables;
+    public boolean isBlockedCodeMode = false;
+
     public void setVariableInScope(Variable variable) {
         String variableName = variable.name();
-        
+
         if(variablesScope.containsKey(variableName)) {
             Variable foundedVariable = variablesScope.get(variableName);
             if(!variable.type().equals(foundedVariable.type()))
                 throw new IllegalStateException(
                         String.format("Incompatible type when setting the value of a variable %s", variableName)
                 );
-        }
-        
+        } else if(isBlockedCodeMode) lastAddedVariables.add(variable.name());
+
         variablesScope.put(variableName, variable);
+    }
+
+    public List<String> getLastAddedVariables() {
+        return lastAddedVariables;
     }
 
     public Variable getVariable(String variableName) {
@@ -33,10 +38,10 @@ public class VariablesScope {
         variablesScope.clear();
     }
 
-    public static void throwIfVariableIsNull(Variable variable, String variableName) {
+    public static void throwIfVariableIsNull(Variable variable, String variableName, int line) {
         if(variable == null) {
             throw new IllegalStateException(
-                    String.format("Variable with name: '%s' was not found in the current scope", variableName)
+                    String.format("Variable with name: '%s' in line %d was not found in the current scope", variableName, line)
             );
         }
     }
@@ -54,5 +59,18 @@ public class VariablesScope {
                     String.format("Variable %s is %s, not %s", variableName, actualType, expectedType)
             );
         }
+    }
+
+    public void removeVariables(List<String> createdVariablesInCycle) {
+        for (String variableName : createdVariablesInCycle) {
+            variablesScope.remove(variableName);
+        }
+        lastAddedVariables = null;
+        isBlockedCodeMode = false;
+    }
+
+    public void beginBlockedMode(List<String> createdVariablesInCycle) {
+        lastAddedVariables = createdVariablesInCycle;
+        isBlockedCodeMode = true;
     }
 }

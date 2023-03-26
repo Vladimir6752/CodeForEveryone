@@ -1,8 +1,10 @@
 package dev.vladimir.cfecodemodule.parsing;
 
 import dev.vladimir.cfecodemodule.tokens.Token;
+import dev.vladimir.cfecodemodule.tokens.another.IfToken;
 import dev.vladimir.cfecodemodule.tokens.another.LoggerToken;
 import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
+import dev.vladimir.cfecodemodule.tokens.another.WhileToken;
 import dev.vladimir.cfecodemodule.tokens.arrays.ArrayAddElementOperationToken;
 import dev.vladimir.cfecodemodule.tokens.arrays.ArrayGetElementOperationToken;
 import dev.vladimir.cfecodemodule.tokens.arrays.ArrayGetLengthOperationToken;
@@ -17,6 +19,8 @@ import dev.vladimir.cfecodemodule.tokens.primitivetypes.IntegerTypeToken;
 import dev.vladimir.cfecodemodule.tokens.primitivevalues.BooleanValueToken;
 import dev.vladimir.cfecodemodule.tokens.primitivevalues.IntegerValueToken;
 import dev.vladimir.cfecodemodule.tokens.symbols.AssignmentToken;
+import dev.vladimir.cfecodemodule.tokens.symbols.CloseCurlyBrace;
+import dev.vladimir.cfecodemodule.tokens.symbols.OpenCurlyBraceToken;
 import dev.vladimir.cfecodemodule.tokens.symbols.SemicolonToken;
 
 import java.util.ArrayList;
@@ -53,8 +57,12 @@ public class Lexer {
 
             new AssignmentToken(),
             new SemicolonToken(),
+            new OpenCurlyBraceToken(),
+            new CloseCurlyBrace(),
 
             new LoggerToken(),
+            new WhileToken(),
+            new IfToken(),
             new VariableNameToken()
     );
     private final String[] lines;
@@ -71,12 +79,14 @@ public class Lexer {
         for (int i = 0; i < lines.length; i++) {
             String line = lines[i];
 
-            if (line.startsWith(LINE_COMMENTARY_SYMBOL) || line.isEmpty() || line.length() == 1)
+            if(line.startsWith(LINE_COMMENTARY_SYMBOL) || line.isEmpty() || (line.length() == 1 && !line.equals("}")))
                 continue;
 
             ArrayList<Token> currentLine = new ArrayList<>();
 
             for (String tokenValue : line.split(" ")) {
+                if(tokenValue.equals("")) continue;
+
                 currentLine.add(
                         tokenOf(tokenValue, i + 1)
                 );

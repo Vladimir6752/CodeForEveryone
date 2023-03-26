@@ -177,7 +177,7 @@ class CalculatedIntegerValueTest {
         );
 
         assertEquals(
-                "Variable with name: 'someNotExistVariable' was not found in the current scope",
+                "Variable with name: 'someNotExistVariable' in line 1 was not found in the current scope",
                 illegalStateException.getMessage()
         );
     }

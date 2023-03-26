@@ -54,7 +54,7 @@ public class ArrayTokensHandler {
         else if(arrayTokenModel.addedOrGetterElement() instanceof String string) {
             Variable getterVariable = commonScope.getVariablesScope().getVariable(string);
 
-            VariablesScope.throwIfVariableIsNull(getterVariable, string);
+            VariablesScope.throwIfVariableIsNull(getterVariable, string, token.getLine());
             VariablesScope.throwIfTypeIncompatible("Число", getterVariable.type(), getterVariable.name());
 
             calledIndex = Integer.parseInt(getterVariable.value().toString());

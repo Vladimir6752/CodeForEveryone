@@ -1,10 +1,8 @@
 package dev.vladimir.cfecodemodule.parsing;
 
-import dev.vladimir.cfecodemodule.linevariants.IntegerArraysInteraction;
-import dev.vladimir.cfecodemodule.linevariants.InteractionWithVariableLine;
-import dev.vladimir.cfecodemodule.linevariants.LineVariant;
-import dev.vladimir.cfecodemodule.linevariants.LoggerLine;
+import dev.vladimir.cfecodemodule.linevariants.*;
 import dev.vladimir.cfecodemodule.tokens.Token;
+import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
 import dev.vladimir.cfecodemodule.tokens.primitiveoperators.bool.PrimitiveBooleanOperatorToken;
 import dev.vladimir.cfecodemodule.tokens.primitivetypes.BooleanTypeToken;
 import dev.vladimir.cfecodemodule.tokens.primitivevalues.BooleanValueToken;
@@ -13,6 +11,7 @@ import dev.vladimir.cfecodemodule.utils.calculatedvalue.AbstractCalculatedValue;
 import dev.vladimir.cfecodemodule.utils.calculatedvalue.CalculatedBooleanValue;
 import dev.vladimir.cfecodemodule.utils.calculatedvalue.CalculatedIntegerValue;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,10 +19,14 @@ import java.util.stream.Collectors;
 public class Parser {
     private final List<List<? extends Token>> tokenizeLines;
     private final CommonScope commonScope;
+    private final List<LineVariant> resultLines = new ArrayList<>();
     private final List<Class<? extends LineVariant>> variantsTokenLines = List.of(
             LoggerLine.class,
             InteractionWithVariableLine.class,
-            IntegerArraysInteraction.class
+            IntegerArraysInteraction.class,
+            WhileLineVariant.class,
+            IfLineVariant.class,
+            CloseCurlyBraceLineVariant.class
     );
 
     public Parser(List<List<? extends Token>> tokenizeLines, CommonScope commonScope) {
@@ -33,6 +36,8 @@ public class Parser {
 
     public void beginParse() {
         tokenizeLines.forEach(this::parseLine);
+
+        BlockedCodeFragmentsRunner.run(resultLines);
     }
 
     private void parseLine(List<? extends Token> lineTokens) {
@@ -49,7 +54,8 @@ public class Parser {
             }
 
             if (newInstance.isEqualsFor(inputTokenClasses)) {
-                newInstance.makeAction();
+                //newInstance.makeAction();
+                resultLines.add(newInstance);
                 return;
             }
         }
@@ -67,6 +73,13 @@ public class Parser {
         for (Token lineToken : lineTokens) {
             if(lineToken instanceof BooleanTypeToken || lineToken instanceof BooleanValueToken || lineToken instanceof PrimitiveBooleanOperatorToken)
                 return new CalculatedBooleanValue();
+            if(lineToken instanceof VariableNameToken variableNameToken) {
+                try {
+                    String variableType = commonScope.getVariablesScope().getVariable(variableNameToken.getValue()).type();
+                    if(variableType.equals("Логический"))
+                        return new CalculatedBooleanValue();
+                } catch (NullPointerException ignored) {}
+            }
         }
         return new CalculatedIntegerValue();
     }

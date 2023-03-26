@@ -19,6 +19,10 @@ public abstract class AbstractCalculatedValue {
     public abstract boolean isCorrectValueFor(List<Class<? extends Token>> valueTokenClasses);
 
     public abstract Object calculateTokens(List<? extends Token> inputTokens);
+    public Object calculateTokens(List<? extends Token> inputTokens, CommonScope commonScope) {
+        inputTokens = setValuesInsteadStatements(inputTokens, commonScope);
+        return calculateTokens(inputTokens);
+    }
 
     public List<? extends Token> setValuesInsteadStatements(List<? extends Token> lineTokens, CommonScope commonScope) {
         List<Token> result = new ArrayList<>();
@@ -37,7 +41,7 @@ public abstract class AbstractCalculatedValue {
             Variable variable = commonScope
                     .getVariablesScope()
                     .getVariable(token.getValue());
-            VariablesScope.throwIfVariableIsNull(variable, token.getValue());
+            VariablesScope.throwIfVariableIsNull(variable, token.getValue(), token.getLine());
 
             String value = (String) variable.value();
 
