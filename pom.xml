@@ -13,11 +13,10 @@
     <packaging>pom</packaging>
 
   <modules>
+    <module>CFEMain</module>
     <module>CodeService</module>
-    <module>UserService</module>
     <module>CFECodeModule</module>
-    <module>CodeRunService</module>
-    <module>ProjectService</module>
+    <module>ExerciseService</module>
   </modules>
 
 </project>

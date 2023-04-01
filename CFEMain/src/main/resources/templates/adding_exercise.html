@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>JSON Input Form</title>
+    <link media="all" type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+    <h1>Enter JSON Data</h1>
+    <form id="exerciseForm" action="/admin/ex/add" method="post">
+        <textarea name="json" rows="10" cols="50"></textarea><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <div th:if="${result}">
+        <p th:text="|${result}|"></p>
+    </div>
+</body>
+</html>

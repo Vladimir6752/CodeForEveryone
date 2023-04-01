@@ -24,7 +24,7 @@ public class IfLineVariant extends BlockedCodeFragmentHeader {
 
                 BlockedCodeFragmentsRunner.run(inlineCodeLines);
 
-                commonScope.getVariablesScope().removeVariables(createdVariablesInCycle);
+                commonScope.getVariablesScope().endBlockedModeAndRemoveVariables(createdVariablesInCycle);
             }
         };
     }

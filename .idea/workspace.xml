@@ -4,33 +4,98 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="214176b2-19e0-4c4d-8fbd-07ed8cd38b42" name="Changes" comment="Arrays integration, refactoring, testing">
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/BlockedCodeFragmentHeader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/CloseCurlyBraceLineVariant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/IfLineVariant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/WhileLineVariant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/parsing/BlockedCodeFragmentsRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/another/IfToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/another/WhileToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/symbols/CloseCurlyBrace.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/symbols/OpenCurlyBraceToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/baseclasses/CFEFileTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/linevariants/CloseCurlyBraceLineVariantTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/linevariants/IfLineVariantTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/linevariants/WhileLineVariantTest.java" afterDir="false" />
+    <list default="true" id="214176b2-19e0-4c4d-8fbd-07ed8cd38b42" name="Changes" comment="If-While integration, refactoring, testing">
+      <change afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/baseclasses/Exercise.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/config/MvcConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/config/SetupDataLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/config/WebSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/controllers/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/controllers/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/controllers/ExerciseAddingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/controllers/ExercisesExecutionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/controllers/MainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/feign/CodeServiceFeignClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/user/models/UserRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/main/resources/static/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/main/resources/templates/adding_exercise.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/main/resources/templates/admin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/main/resources/templates/executing_exercise.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/main/resources/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/main/resources/templates/main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/main/resources/templates/reg.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeService/src/main/java/dev/vladimir/codeservice/controllers/CodeRunController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeService/src/main/java/dev/vladimir/codeservice/feign/ExerciseServiceFeignClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeService/target/classes/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ExerciseService/src/main/java/dev/vladimir/exerciseservice/config/ExercisesData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ExerciseService/src/main/java/dev/vladimir/exerciseservice/config/SetupDataLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ExerciseService/src/main/java/dev/vladimir/exerciseservice/controllers/ExerciseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFECodeModule/sample.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/sample.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/baseclasses/CFEFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/baseclasses/CFEFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/IntegerArraysInteraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/IntegerArraysInteraction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/InteractionWithVariableLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/InteractionWithVariableLine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/baseclasses/CFEProject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/baseclasses/Project.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/IfLineVariant.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/IfLineVariant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/LoggerLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/LoggerLine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/WhileLineVariant.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/WhileLineVariant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/parsing/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/parsing/Lexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/parsing/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/parsing/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/another/VariableNameToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/another/VariableNameToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitivetypes/IntegerTypeToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/primitivetypes/IntegerTypeToken.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/VariablesScope.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/VariablesScope.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/arrays/ArrayTokensHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/arrays/ArrayTokensHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/calculatedvalue/AbstractCalculatedValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/calculatedvalue/AbstractCalculatedValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/parsing/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/parsing/ParserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/utils/CalculatedBooleanValueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/utils/CalculatedBooleanValueTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/utils/CalculatedIntegerValueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/utils/CalculatedIntegerValueTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/baseclasses/CFEFileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/baseclasses/CFEFileTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeRunService/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeRunService/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeRunService/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeRunService/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeRunService/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeRunService/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeRunService/src/main/java/dev/vladimir/coderunservice/CodeRunServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeRunService/src/main/java/dev/vladimir/coderunservice/controllers/StartProjectController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeRunService/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeRunService/src/test/java/dev/vladimir/coderunservice/CodeRunServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeService/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/CodeService/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeService/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/CodeService/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeService/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/CodeService/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeService/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/CodeService/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeService/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/CodeService/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CodeService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeService/src/main/java/dev/vladimir/codeservice/CodeServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/CodeService/src/main/java/dev/vladimir/codeservice/CodeServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeService/src/main/java/dev/vladimir/codeservice/controllers/RunController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeService/src/main/java/dev/vladimir/codeservice/feignClients/CodeRunServiceFeignClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeService/src/main/java/dev/vladimir/codeservice/feignClients/ProjectServiceFeignClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeService/src/main/java/dev/vladimir/codeservice/feignClients/UserServiceFeignClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeService/src/test/java/dev/vladimir/codeservice/CodeServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/CodeService/src/test/java/dev/vladimir/codeservice/CodeServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectService/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectService/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectService/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectService/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectService/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectService/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectService/src/main/java/dev/vladimir/projectservice/ProjectServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectService/src/main/java/dev/vladimir/projectservice/controllers/GetProjectController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectService/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectService/src/test/java/dev/vladimir/projectservice/ProjectServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/dev/vladimir/userservice/UserServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/dev/vladimir/userservice/controllers/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/dev/vladimir/userservice/models/SimpleUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/user/models/SimpleUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/dev/vladimir/userservice/models/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/user/models/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/dev/vladimir/userservice/models/UserRole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/dev/vladimir/userservice/repo/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/user/repo/UserRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/dev/vladimir/userservice/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/user/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/dev/vladimir/userservice/validation/UserValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/user/validation/UserValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/dev/vladimir/userservice/validation/ValidationObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/user/validation/ValidationObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/test/java/dev/vladimir/userservice/UserServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +111,9 @@
         <option value="Enum" />
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
+        <option value="CSS File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -79,6 +146,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
@@ -91,17 +159,19 @@
     &quot;ignore.preview.features.used&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;19&quot;,
     &quot;last.edited.regexp&quot;: &quot;\n&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/disne/Desktop/CodeForEveryoneServer&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/disne/Desktop/CodeForEveryoneServer/CFEMain/src/main/java/dev/vladimir/cfemain&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;08e4685d42dfcd65c53f491da7e3abe1&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;730489cb01eb0e6fa53fde8cb8775a48&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -112,19 +182,26 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="dev.vladimir.cfemain.feign" />
       <recent name="dev.vladimir.cfecodemodule.linevariants" />
       <recent name="dev.vladimir.cfecodemodule.parsing" />
       <recent name="dev.vladimir.cfecodemodule.operators.bool" />
       <recent name="dev.vladimir.cfecodemodule.utils" />
-      <recent name="dev.vladimir.cfecodemodule.operators" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\disne\Desktop\CodeForEveryoneServer\CFEMain\src\main\java\dev\vladimir\cfemain" />
+      <recent name="C:\Users\disne\Desktop\CodeForEveryoneServer\CFEMain\src\main\resources\templates" />
       <recent name="C:\Users\disne\Desktop\CodeForEveryoneServer\UserService\src\main\java\dev\vladimir\userservice" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\disne\Desktop\CodeForEveryoneServer" />
+      <recent name="C:\Users\disne\Desktop\CodeForEveryoneServer\CFEMain\src\main\resources\static\css" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="dev.vladimir.codeservice" />
       <recent name="dev.vladimir.cfecodemodule.utils.arrays" />
       <recent name="dev.vladimir.cfecodemodule.operators" />
       <recent name="dev.vladimir.cfecodemodule.tokens.operators" />
@@ -137,6 +214,9 @@
       <recent name="dev.vladimir.cfecodemodule.utils" />
       <recent name="dev.vladimir.cfecodemodule.parsing" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="dev.vladimir.cfemain.feign" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
@@ -145,7 +225,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All tests">
+  <component name="RunManager" selected="Spring Boot.CfeMainApplication">
     <configuration name="CFEFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dev.vladimir.cfecodemodule.baseclasses.CFEFile" />
       <module name="CFECodeModule" />
@@ -233,9 +313,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CodeRunServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="CodeRunService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="dev.vladimir.coderunservice.CodeRunServiceApplication" />
+    <configuration name="CfeMainApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="CFEMain" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="dev.vladimir.cfemain.CfeMainApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -247,16 +327,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProjectServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="ProjectService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="dev.vladimir.projectservice.ProjectServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="UserService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="dev.vladimir.userservice.UserServiceApplication" />
+    <configuration name="ExerciseServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="ExerciseService" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="dev.vladimir.exerciseservice.ExerciseServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -268,15 +341,14 @@
       <item itemvalue="JUnit.CFEFileTest.test_blocked_statements" />
       <item itemvalue="JUnit.CloseCurlyBraceLineVariantTest.isEqualsFor" />
       <item itemvalue="JUnit.IfLineVariantTest" />
-      <item itemvalue="Spring Boot.CodeRunServiceApplication" />
+      <item itemvalue="Spring Boot.ExerciseServiceApplication" />
+      <item itemvalue="Spring Boot.CfeMainApplication" />
       <item itemvalue="Spring Boot.CodeServiceApplication" />
-      <item itemvalue="Spring Boot.ProjectServiceApplication" />
-      <item itemvalue="Spring Boot.UserServiceApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CFEFileTest.testing_blocked_statements_more" />
         <item itemvalue="Application.CFEFile" />
+        <item itemvalue="JUnit.CFEFileTest.testing_blocked_statements_more" />
         <item itemvalue="JUnit.CFEFileTest.test_blocked_statements" />
         <item itemvalue="JUnit.CloseCurlyBraceLineVariantTest.isEqualsFor" />
         <item itemvalue="JUnit.IfLineVariantTest" />
@@ -333,6 +405,21 @@
       <workItem from="1679734691614" duration="3692000" />
       <workItem from="1679743509033" duration="12697000" />
       <workItem from="1679805063428" duration="14592000" />
+      <workItem from="1679839479551" duration="1836000" />
+      <workItem from="1679903323245" duration="13168000" />
+      <workItem from="1679972294211" duration="5699000" />
+      <workItem from="1680001550072" duration="3663000" />
+      <workItem from="1680008134274" duration="2794000" />
+      <workItem from="1680011730565" duration="5763000" />
+      <workItem from="1680081387246" duration="3002000" />
+      <workItem from="1680098235991" duration="9133000" />
+      <workItem from="1680145837618" duration="5431000" />
+      <workItem from="1680189010194" duration="2027000" />
+      <workItem from="1680231731404" duration="5532000" />
+      <workItem from="1680269225154" duration="3284000" />
+      <workItem from="1680277360556" duration="2407000" />
+      <workItem from="1680325109925" duration="5679000" />
+      <workItem from="1680336596987" duration="15874000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1678794148683</created>
@@ -369,11 +456,28 @@
       <option name="project" value="LOCAL" />
       <updated>1679544623466</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="If-While integration, refactoring, testing">
+      <created>1679839600383</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1679839600383</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.security:spring-security-core" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.cloud:spring-cloud-context" />
+    <option featureType="dependencySupport" implementationName="java:org.thymeleaf:thymeleaf" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -392,7 +496,8 @@
     <MESSAGE value="Boolean integration, refactoring" />
     <MESSAGE value="Beginning arrays integration, refactoring" />
     <MESSAGE value="Arrays integration, refactoring, testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Arrays integration, refactoring, testing" />
+    <MESSAGE value="If-While integration, refactoring, testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="If-While integration, refactoring, testing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -400,6 +505,18 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ClassCastException" package="java.lang" />
           <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.springframework.security.authentication.InternalAuthenticationServiceException" package="org.springframework.security.authentication" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.springframework.beans.factory.BeanDefinitionStoreException" package="org.springframework.beans.factory" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
+          <option name="timeStamp" value="4" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>

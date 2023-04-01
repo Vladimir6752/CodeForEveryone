@@ -85,6 +85,7 @@ public class Lexer {
             ArrayList<Token> currentLine = new ArrayList<>();
 
             for (String tokenValue : line.split(" ")) {
+                tokenValue = tokenValue.trim();
                 if(tokenValue.equals("")) continue;
 
                 currentLine.add(

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Главная</title>
+    <link media="all" type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+    <h1>Привет, <span sec:authentication="name"></span>!</h1>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Выйти"/>
+    </form>
+
+    <div>
+        <p th:each="exId : ${exerisesId}">
+            <a th:href="@{'/ex?exId=' + ${exId}}" th:text="|Решать ${exId}|"></a>
+        </p>
+    </div>
+
+    <form th:action="@{/}" method="post">
+        <p><label for="code">Введите код</label><br></p>
+        <p><textarea id="code"
+                     name="code"
+                     placeholder="Число индекс = 10 ;"
+                     rows="10"
+                     cols="50"
+                     th:inline="text">[[${code}]]</textarea><br></p>
+        <p><input type="submit" value="Запустить"></p>
+    </form>
+
+    <div th:if="${console}">
+        <p>Консоль:</p>
+        <span style="white-space: pre-line" th:text="|${console}|"></span>
+    </div>
+</body>
+</html>

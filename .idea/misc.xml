@@ -5,13 +5,16 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/ProjectService/pom.xml" />
-        <option value="$PROJECT_DIR$/CodeRunService/pom.xml" />
         <option value="$PROJECT_DIR$/CFECodeModule/pom.xml" />
+        <option value="$PROJECT_DIR$/CodeService/pom.xml" />
+        <option value="$PROJECT_DIR$/CFEMain/pom.xml" />
+        <option value="$PROJECT_DIR$/ExerciseService/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/ProjectService/pom.xml" />
+        <option value="$PROJECT_DIR$/UserService/pom.xml" />
         <option value="$PROJECT_DIR$/untitled2/pom.xml" />
       </set>
     </option>

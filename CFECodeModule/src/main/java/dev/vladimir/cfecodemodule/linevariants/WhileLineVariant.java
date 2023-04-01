@@ -23,7 +23,7 @@ public class WhileLineVariant extends BlockedCodeFragmentHeader {
 
                 BlockedCodeFragmentsRunner.run(inlineCodeLines);
 
-                commonScope.getVariablesScope().removeVariables(createdVariablesInCycle);
+                commonScope.getVariablesScope().endBlockedModeAndRemoveVariables(createdVariablesInCycle);
 
                 ++cyclesCounter;
                 if(cyclesCounter > 100) {

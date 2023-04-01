@@ -1,11 +1,13 @@
 package dev.vladimir.cfecodemodule.linevariants;
 
+import dev.vladimir.cfecodemodule.baseclasses.CFEFile;
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.tokens.another.LoggerToken;
 import dev.vladimir.cfecodemodule.tokens.another.VariableNameToken;
 import dev.vladimir.cfecodemodule.tokens.symbols.SemicolonToken;
 import dev.vladimir.cfecodemodule.utils.CommonScope;
 import dev.vladimir.cfecodemodule.utils.Variable;
+import dev.vladimir.cfecodemodule.utils.VariablesScope;
 import dev.vladimir.cfecodemodule.utils.arrays.ArrayTokensHandler;
 import dev.vladimir.cfecodemodule.utils.calculatedvalue.AbstractCalculatedValue;
 
@@ -16,8 +18,8 @@ public class LoggerLine extends LineVariant {
         super(commonScope, lineTokens, calculatedValue);
         currentLineAction = lineTokens1 -> {
             if (isArrayLogging(lineTokens1.subList(0, lineTokens1.size() - 1))) {
-                System.out.println(
-                        ArrayTokensHandler.arrayToString(lineTokens1.get(1).getValue(), commonScope)
+                CFEFile.log(
+                        ArrayTokensHandler.arrayToString(lineTokens1.get(1).getValue(), commonScope) + "\n"
                 );
                 return;
             }
@@ -26,8 +28,8 @@ public class LoggerLine extends LineVariant {
                     lineTokens1.subList(1, lineTokens1.size() - 1), commonScope
             );
 
-            System.out.println(
-                    calculatedValue.calculateTokens(inputTokens)
+            CFEFile.log(
+                    calculatedValue.calculateTokens(inputTokens).toString() + "\n"
             );
         };
     }
@@ -41,6 +43,7 @@ public class LoggerLine extends LineVariant {
         if(expectedVariableName.getClass().equals(VariableNameToken.class)){
             Variable variable = commonScope.getVariablesScope().getVariable(expectedVariableName.getValue());
 
+            VariablesScope.throwIfVariableIsNull(variable, expectedVariableName.getValue(), expectedVariableName.getLine());
             if(variable.type().equals("Число[]")) {
                 return true;
             }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Выполнить задачу</title>
+    <link media="all" type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+    <h1 th:text="|Задача ${param.exId} ${exercise.getTitle()}|"></h1>
+
+    <form th:action="@{'/ex?exId=' + ${param.exId}}" method="post">
+        <p><label for="code">Введите код</label><br></p>
+        <p><textarea id="code"
+                     name="code"
+                     placeholder="Число индекс = 10 ;"
+                     rows="10"
+                     cols="50"
+                     th:inline="text">[[${code}]]</textarea><br></p>
+        <p><input type="submit" value="Запустить"></p>
+    </form>
+
+    <div th:if="${output}">
+        <p>Консоль:</p>
+        <span style="white-space: pre-line" th:text="|${output}|"></span>
+    </div>
+</body>
+</html>

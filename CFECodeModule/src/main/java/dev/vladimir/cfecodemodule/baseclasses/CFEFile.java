@@ -4,6 +4,7 @@ import dev.vladimir.cfecodemodule.parsing.Lexer;
 import dev.vladimir.cfecodemodule.parsing.Parser;
 import dev.vladimir.cfecodemodule.tokens.Token;
 import dev.vladimir.cfecodemodule.utils.CommonScope;
+import dev.vladimir.cfecodemodule.utils.Variable;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,15 +12,34 @@ import java.util.List;
 
 public class CFEFile {
     public final CommonScope commonScope = new CommonScope();
+    public static String out = "";
 
     public static void main(String[] args) {
-        new CFEFile(getScript());
+        System.out.println(
+                new CFEFile(getScript()).out
+        );
+    }
+
+    public CFEFile(String script, List<Variable> startedVariables) {
+        out = "";
+        startedVariables.forEach(variable -> commonScope.getVariablesScope().setVariableInScope(variable));
+
+        run(script);
     }
 
     public CFEFile(String script) {
-        List<List<? extends Token>> tokenizeLines = new Lexer(script).analyze();
+        out = "";
+        run(script);
+    }
 
-        new Parser(tokenizeLines, commonScope).beginParse();
+    private void run(String script) {
+        try {
+            List<List<? extends Token>> tokenizeLines = new Lexer(script).analyze();
+
+            new Parser(tokenizeLines, commonScope).beginParse();
+        } catch (Exception e) {
+            log(e.getMessage());
+        }
     }
 
     private static String getScript() {
@@ -35,5 +55,9 @@ public class CFEFile {
         } catch (Exception e) {
             throw new RuntimeException("no file");
         }
+    }
+
+    public static void log(String s) {
+        CFEFile.out += s;
     }
 }

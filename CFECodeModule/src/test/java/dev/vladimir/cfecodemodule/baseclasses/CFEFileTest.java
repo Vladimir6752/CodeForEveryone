@@ -3,8 +3,6 @@ package dev.vladimir.cfecodemodule.baseclasses;
 import dev.vladimir.cfecodemodule.utils.VariablesScope;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -111,11 +109,8 @@ class CFEFileTest {
                 
                 """;
 
-        PrintStream originalOut = System.out;
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-
-        VariablesScope variablesScope = new CFEFile(script).commonScope.getVariablesScope();
+        CFEFile cfeFile = new CFEFile(script);
+        VariablesScope variablesScope = cfeFile.commonScope.getVariablesScope();
 
         assertEquals(
                 List.of(11, 12, 1),
@@ -142,9 +137,8 @@ class CFEFileTest {
                 someInts=[11, 12, 1]
                 """;
 
-        System.setOut(originalOut);
         String[] expected = expectedOut.split("\n");
-        String[] actual = out.toString().split("\n");
+        String[] actual = cfeFile.out.split("\n");
 
         for (int i = 0; i < actual.length; i++) {
             assertEquals(expected[i], actual[i].trim());

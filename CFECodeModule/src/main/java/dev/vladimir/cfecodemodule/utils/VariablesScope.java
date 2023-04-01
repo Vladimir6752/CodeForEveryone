@@ -22,10 +22,6 @@ public class VariablesScope {
         variablesScope.put(variableName, variable);
     }
 
-    public List<String> getLastAddedVariables() {
-        return lastAddedVariables;
-    }
-
     public Variable getVariable(String variableName) {
         return variablesScope.get(variableName);
     }
@@ -56,12 +52,12 @@ public class VariablesScope {
     public static void throwIfTypeIncompatible(String expectedType, String actualType, String variableName) {
         if(!actualType.equals(expectedType)) {
             throw new IllegalStateException(
-                    String.format("Variable %s is %s, not %s", variableName, actualType, expectedType)
+                    String.format("Variable %s is type: %s, not %s", variableName, actualType, expectedType)
             );
         }
     }
 
-    public void removeVariables(List<String> createdVariablesInCycle) {
+    public void endBlockedModeAndRemoveVariables(List<String> createdVariablesInCycle) {
         for (String variableName : createdVariablesInCycle) {
             variablesScope.remove(variableName);
         }
