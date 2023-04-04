@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1 th:text="|Задача ${param.exId} ${exercise.getTitle()}|"></h1>
+    <p th:if="${isSolved}">Решена успешно</p>
 
     <form th:action="@{'/ex?exId=' + ${param.exId}}" method="post">
         <p><label for="code">Введите код</label><br></p>
@@ -19,9 +20,8 @@
         <p><input type="submit" value="Запустить"></p>
     </form>
 
-    <div th:if="${output}">
-        <p>Консоль:</p>
-        <span style="white-space: pre-line" th:text="|${output}|"></span>
-    </div>
+    <p>Консоль:</p>
+    <br>
+    <span th:if="${output}" style="white-space: pre-line" th:text="|${output}|"></span>
 </body>
 </html>

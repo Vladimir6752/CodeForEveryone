@@ -22,7 +22,12 @@ public class CFEFile {
 
     public CFEFile(String script, List<Variable> startedVariables) {
         out = "";
-        startedVariables.forEach(variable -> commonScope.getVariablesScope().setVariableInScope(variable));
+        startedVariables
+                .forEach(
+                        variable -> commonScope
+                                .getVariablesScope()
+                                .setVariableInScope(variable)
+                );
 
         run(script);
     }

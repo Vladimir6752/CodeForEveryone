@@ -25,6 +25,11 @@ public class ValidationObject<T> {
         return errors.size() == 0;
     }
 
+    public boolean hasErrors() {
+        return errors.size() != 0;
+    }
+
+
     public void setValue(T value) {
         this.value = value;
     }

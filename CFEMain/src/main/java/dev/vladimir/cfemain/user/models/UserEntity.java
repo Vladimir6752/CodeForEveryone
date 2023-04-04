@@ -25,11 +25,22 @@ public class UserEntity implements UserDetails {
     private String password;
     private String uuid = String.valueOf(UUID.randomUUID());
     private Set<UserRole> roles = Set.of(UserRole.USER);
+    private List<Integer> solvedExercisesId = List.of();
     private String createdDate = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
 
     public UserEntity(SimpleUser simpleUser) {
         this.username = simpleUser.getUsername();
         this.password = simpleUser.getPassword();
+    }
+
+    @Column(name = "solved_ex_ids", columnDefinition = "text default '[]'")
+    @Convert(converter = ArrayJsonConverter.class)
+    public List<Integer> getSolvedExercisesId() {
+        return solvedExercisesId;
+    }
+
+    public boolean isSolvedExerciseId(int exId) {
+        return getSolvedExercisesId().contains(exId);
     }
 
     @Id
@@ -57,6 +68,12 @@ public class UserEntity implements UserDetails {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    public void addSolvedExerciseId(int exId) {
+        if(!getSolvedExercisesId().contains(exId)) {
+            getSolvedExercisesId().add(exId);
+        }
     }
 
     @Transient

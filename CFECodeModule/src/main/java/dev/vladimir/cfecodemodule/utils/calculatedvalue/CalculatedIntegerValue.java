@@ -41,8 +41,6 @@ public class CalculatedIntegerValue extends AbstractCalculatedValue {
 
     @Override
     public Object calculateTokens(List<? extends Token> inputTokens) {
-        //List<? extends Token> values = inputTokens;
-
         while (inputTokens.size() != 1) {
             inputTokens = calculateImportantValue(inputTokens);
         }

@@ -21,6 +21,11 @@ public class UserService implements UserDetailsService {
         return userRepo.save(new UserEntity(simpleUser));
     }
 
+    public void addSolvedExerciseIdInUser(int exId, UserEntity user) {
+        user.addSolvedExerciseId(exId);
+        userRepo.save(user);
+    }
+
     public ValidationObject<UserEntity> validateNewUser(SimpleUser simpleUser) {
         ValidationObject<UserEntity> validation = userValidator.validateNewUser(simpleUser);
 

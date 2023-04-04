@@ -18,8 +18,7 @@
             <p th:text="${exercise.getActualVariablesIn()}"></p>
             <p th:text="${exercise.getExpectedOut()}"></p>
             <form th:action="@{'/admin/delete?exId=' + ${exercise.getId()}}" method="post">
-                <label for="button" th:text="|Удалить ${exercise.getId()}|"></label>
-                <input id="button" type="submit">
+                <input id="button" type="submit" th:value="|Удалить ${exercise.getId()}|">
             </form>
         </div>
     </div>

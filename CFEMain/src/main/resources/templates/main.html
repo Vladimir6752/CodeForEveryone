@@ -14,6 +14,8 @@
     <div>
         <p th:each="exId : ${exerisesId}">
             <a th:href="@{'/ex?exId=' + ${exId}}" th:text="|Решать ${exId}|"></a>
+
+            <span th:if="${user.isSolvedExerciseId(exId)}">Решена</span>
         </p>
     </div>
 

@@ -24,9 +24,9 @@ public class AuthController {
     public Model addNewUser(Model model, SimpleUser simpleUser) {
         ValidationObject<UserEntity> validation = userService.validateNewUser(simpleUser);
 
-        if(validation.hasNoErrors())
-            return model.addAttribute("success");
+        if(validation.hasErrors())
+            return model.addAttribute("errors",validation.getErrors());
 
-        return model.addAttribute("errors",validation.getErrors());
+        return model.addAttribute("success", true);
     }
 }

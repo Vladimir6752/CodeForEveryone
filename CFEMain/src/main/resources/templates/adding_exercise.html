@@ -1,18 +1,115 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>JSON Input Form</title>
+    <title>Добавить задачу</title>
     <link media="all" type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
-    <h1>Enter JSON Data</h1>
     <form id="exerciseForm" action="/admin/ex/add" method="post">
-        <textarea name="json" rows="10" cols="50"></textarea><br><br>
-        <input type="submit" value="Submit">
+        <input type="hidden" name="json">
+        <p th:text="|Задача ${exAmount}|"></p>
+        <input id="exId" type="hidden" th:value="|${exAmount}|" name="id">
+        <label>Описание <input id="exTitle" type="text" name="title"></label>
+        <fieldset>
+            <legend>Входные переменные
+                <label for="rows">Строк:</label>
+                <input type="number" id="rows" name="rows" min="1" max="10" required>
+                <label for="cols">Столбцов:</label>
+                <input type="number" id="cols" name="cols" min="1" max="10" required>
+            </legend>
+
+            <button type="button" id="create-btn">Создать</button>
+            <table id="array-table"></table>
+        </fieldset>
+
+        <fieldset>
+            <legend>Выход <input id="add_out" type="button" value="Добавить выход"></legend>
+            <div id="out_array_wrapper">
+
+            </div>
+        </fieldset>
+        <button type="button" id="submit-btn">Подтвердить</button>
     </form>
 
     <div th:if="${result}">
         <p th:text="|${result}|"></p>
     </div>
+
+    <script th:src="@{/js/dynamicArray.js}"></script>
+
+    <script>
+        const outputArray = new DynamicModifiableArray(
+            document.getElementById("out_array_wrapper"),
+            document.getElementById("add_out"),
+            '<input required type="text" name="name" placeholder="Выход">' +
+            '<a href="#" class="remove_field">Удалить</a>\n' +
+            '<div class="variables_wrapper"></div>\n',
+            function (inputFields, values, i) {
+                values.push(inputFields[i].children[0].value);
+            }
+        )
+
+        function createArrayTable(rows, cols) {
+            let table = document.getElementById('array-table');
+
+            // Remove any existing table rows
+            while (table.rows.length > 0) {
+                table.deleteRow(0);
+            }
+
+            // Create table rows and cells
+            for (let i = 0; i < rows; i++) {
+                let row = table.insertRow();
+                for (let j = 0; j < cols; j++) {
+                    row.insertCell().innerHTML +=
+                        '<div><input required type="text" name="name" placeholder="name"></div>' +
+                        '<div><input required type="text" name="type" placeholder="type"></div>' +
+                        '<div><input required type="text" name="value" placeholder="value"></div>'
+                }
+            }
+        }
+
+        document.getElementById('create-btn').addEventListener('click', function() {
+            let rows = document.getElementById('rows').value;
+            let cols = document.getElementById('cols').value;
+
+            createArrayTable(rows, cols);
+        });
+
+        document.getElementById('submit-btn').addEventListener('click', function(event) {
+            event.preventDefault();
+
+            let table = document.getElementById('array-table');
+            let variablesArrays = [];
+
+            for (let i = 0; i < table.rows.length; i++) {
+                let row = table.rows[i];
+                let rowData = [];
+                for (let j = 0; j < row.cells.length; j++) {
+                    let cell = row.cells[j];
+                    const name = cell.getElementsByTagName('input')[0].value;
+                    const type = cell.getElementsByTagName('input')[1].value;
+                    const value = cell.getElementsByTagName('input')[2].value;
+                    if(!name || !type || !value)
+                        return alert("не заполнено")
+                    rowData.push(new Variable(name, type, value))
+                }
+                variablesArrays.push(rowData);
+            }
+
+            const body = JSON.stringify(
+                new Exercise(
+                    document.getElementById("exId").value,
+                    document.getElementById("exTitle").value,
+                    variablesArrays,
+                    outputArray.getOutput()
+                )
+            );
+            if(confirm('Подтвердить? ' + body)) {
+                document.getElementById("exerciseForm").children[0].value = body
+                document.getElementById("exerciseForm").submit()
+            }
+        });
+    </script>
 </body>
 </html>
