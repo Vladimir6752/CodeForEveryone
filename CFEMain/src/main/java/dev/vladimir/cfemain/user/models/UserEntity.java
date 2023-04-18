@@ -33,14 +33,20 @@ public class UserEntity implements UserDetails {
         this.password = simpleUser.getPassword();
     }
 
+    public boolean isSolvedExerciseId(int exId) {
+        return getSolvedExercisesId().contains(exId);
+    }
+
+    public void addSolvedExerciseId(int exId) {
+        if(!getSolvedExercisesId().contains(exId)) {
+            getSolvedExercisesId().add(exId);
+        }
+    }
+
     @Column(name = "solved_ex_ids", columnDefinition = "text default '[]'")
     @Convert(converter = ArrayJsonConverter.class)
     public List<Integer> getSolvedExercisesId() {
         return solvedExercisesId;
-    }
-
-    public boolean isSolvedExerciseId(int exId) {
-        return getSolvedExercisesId().contains(exId);
     }
 
     @Id
@@ -68,12 +74,6 @@ public class UserEntity implements UserDetails {
     @Override
     public int hashCode() {
         return getClass().hashCode();
-    }
-
-    public void addSolvedExerciseId(int exId) {
-        if(!getSolvedExercisesId().contains(exId)) {
-            getSolvedExercisesId().add(exId);
-        }
     }
 
     @Transient

@@ -66,15 +66,15 @@ public class Lexer {
             new VariableNameToken()
     );
     private final String[] lines;
-    private final String LINE_SEPARATOR_SYMBOL = "\n";
-    private final String LINE_COMMENTARY_SYMBOL = "#";
+    private static final String LINE_SEPARATOR_SYMBOL = "\n";
+    private static final String LINE_COMMENTARY_SYMBOL = "#";
 
     public Lexer(String data) {
         lines = data.split(LINE_SEPARATOR_SYMBOL);
     }
 
-    public List<List<? extends Token>> analyze() {
-        List<List<? extends Token>> result = new ArrayList<>();
+    public List<List<Token>> analyze() {
+        List<List<Token>> result = new ArrayList<>();
 
         for (int i = 0; i < lines.length; i++) {
             String line = lines[i];
@@ -111,7 +111,11 @@ public class Lexer {
                         foundedToken.setLine(line);
 
                         return foundedToken;
-                    } catch (Exception ignored) {}
+                    } catch (Exception ignored) {
+                        throw new RuntimeException(
+                                String.format("empty constructor is undefined in token %s", token.getClass())
+                        );
+                    }
                 }
             }
         }

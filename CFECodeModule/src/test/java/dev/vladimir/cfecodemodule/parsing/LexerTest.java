@@ -26,7 +26,7 @@ class LexerTest {
     void analyze_return_compatible_tokens() {
         Lexer lexer = new Lexer("Число someVariable = 20 + 20 - 20 / 20 * 20 ;");
 
-        List<List<? extends Token>> analyzedLines = lexer.analyze();
+        List<List<Token>> analyzedLines = lexer.analyze();
 
         VariableNameToken variableNameToken = new VariableNameToken("someVariable");
 
@@ -80,7 +80,7 @@ class LexerTest {
                 List.of(new ArrayGetLengthOperationToken())
         );
 
-        List<List<? extends Token>> analyze = lexer.analyze();
+        List<List<Token>> analyze = lexer.analyze();
         for (int i = 0; i < analyze.size(); i++) {
             List<? extends Token> tokens = analyze.get(i);
             assertEquals(1, tokens.size());
@@ -93,7 +93,7 @@ class LexerTest {
     void analyze_one_line_return_one_line_tokens() {
         Lexer lexer = new Lexer("Число someVariable = 20 ;");
 
-        List<List<? extends Token>> analyzedLines = lexer.analyze();
+        List<List<Token>> analyzedLines = lexer.analyze();
 
         assertEquals(1, analyzedLines.size());
     }
@@ -106,7 +106,7 @@ class LexerTest {
                                 
                 """);
 
-        List<List<? extends Token>> analyzeLines = lexer.analyze();
+        List<List<Token>> analyzeLines = lexer.analyze();
 
         assertEquals(0, analyzeLines.size());
     }
@@ -121,7 +121,7 @@ class LexerTest {
                         """
                 );
 
-        List<List<? extends Token>> analyzeLines = lexer.analyze();
+        List<List<Token>> analyzeLines = lexer.analyze();
 
         assertEquals(3, analyzeLines.get(0).get(0).getLine());
     }

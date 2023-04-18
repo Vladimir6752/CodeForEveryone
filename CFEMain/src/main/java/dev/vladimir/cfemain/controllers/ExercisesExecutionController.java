@@ -19,7 +19,9 @@ public class ExercisesExecutionController {
     private final UserService userService;
 
     @GetMapping
-    public String getExercisesExecutionPage(Model model, @AuthenticationPrincipal UserEntity user, @RequestParam Integer exId) {
+    public String getExercisesExecutionPage(Model model,
+                                            @AuthenticationPrincipal UserEntity user,
+                                            Integer exId) {
         model.addAttribute("exercise", exerciseServiceFeignClient.getById(exId));
         model.addAttribute("isSolved", user.getSolvedExercisesId().contains(exId));
 
@@ -27,7 +29,10 @@ public class ExercisesExecutionController {
     }
 
     @PostMapping()
-    public String runExerciseCode(Model model, @AuthenticationPrincipal UserEntity user, @RequestParam Integer exId, String code) {
+    public String runExerciseCode(Model model,
+                                  @AuthenticationPrincipal UserEntity user,
+                                  Integer exId,
+                                  String code) {
         model.addAttribute("code", code);
 
         String codeRunningOutput = codeServiceFeignClient.runExerciseCode(code, exId);
@@ -35,10 +40,7 @@ public class ExercisesExecutionController {
         if(codeRunningOutput.equals("Задача успешно выполнена!"))
             userService.addSolvedExerciseIdInUser(exId, user);
 
-        model.addAttribute(
-                "output",
-                codeRunningOutput
-        );
+        model.addAttribute("output", codeRunningOutput);
 
         return getExercisesExecutionPage(model, user, exId);
     }

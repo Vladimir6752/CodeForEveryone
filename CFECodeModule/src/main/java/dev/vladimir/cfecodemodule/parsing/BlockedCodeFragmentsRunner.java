@@ -5,6 +5,8 @@ import dev.vladimir.cfecodemodule.linevariants.*;
 import java.util.List;
 
 public class BlockedCodeFragmentsRunner {
+    private BlockedCodeFragmentsRunner() {}
+
     public static void run(List<LineVariant> codeLines) {
         //TODO refactor this
         BlockedCodeFragmentHeader currentBlockedCodeFragment = null;
@@ -39,7 +41,6 @@ public class BlockedCodeFragmentsRunner {
                 if (headersAmount == 0) {
                     currentBlockedCodeFragment.makeAction();
                     currentBlockedCodeFragment = null;
-                    //headersAmount = 0;
                 } else {
                     --headersAmount;
                     currentBlockedCodeFragment.addCodeLine(codeLine);

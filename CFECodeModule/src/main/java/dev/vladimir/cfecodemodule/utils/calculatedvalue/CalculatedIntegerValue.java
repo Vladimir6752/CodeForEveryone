@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class CalculatedIntegerValue extends AbstractCalculatedValue {
+public class CalculatedIntegerValue implements AbstractCalculatedValue {
     @Override
     public boolean isCorrectValueFor(List<Class<? extends Token>> valueTokenClasses) {
         if(valueTokenClasses.size() % 2 == 0) return false;

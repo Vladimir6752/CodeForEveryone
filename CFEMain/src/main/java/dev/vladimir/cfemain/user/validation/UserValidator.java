@@ -10,36 +10,12 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class UserValidator {
     private UserRepo userRepo;
-    private final int MIN_USER_PASSWORD_LENGTH = 5;
-
-    public boolean validateUserByUUID(String username, String uuid) {
-        UserEntity userEntity = userRepo.findByUsername(username);
-
-        if(userEntity == null || !userEntity.getUuid().equals(uuid)) {
-            return false;
-        }
-
-        return true;
-    }
-
-    public ValidationObject<UserEntity> validateUserByPassword(SimpleUser simpleUser) {
-        ValidationObject<UserEntity> userValidation = new ValidationObject<>();
-
-        UserEntity foundedUserEntity = userRepo.findByUsername(simpleUser.getUsername());
-
-        if (foundedUserEntity == null || !foundedUserEntity.getPassword().equals(simpleUser.getPassword())) {
-            userValidation.addError("Имя или пароль неверный");
-            return userValidation;
-        }
-
-        return userValidation;
-    }
+    public static final int MIN_USER_PASSWORD_LENGTH = 5;
 
     public ValidationObject<UserEntity> validateNewUser(SimpleUser simpleUser) {
         ValidationObject<UserEntity> userValidation = new ValidationObject<>();
 
         validateUserAnExisting(simpleUser.getUsername(), userValidation);
-
         validatePasswordLength(simpleUser.getPassword(), userValidation);
 
         return userValidation;

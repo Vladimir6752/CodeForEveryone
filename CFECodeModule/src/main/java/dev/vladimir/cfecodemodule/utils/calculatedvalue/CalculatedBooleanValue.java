@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CalculatedBooleanValue extends AbstractCalculatedValue {
+public class CalculatedBooleanValue implements AbstractCalculatedValue {
     @Override
     public boolean isCorrectValueFor(List<Class<? extends Token>> valueTokenClasses) {
         if(valueTokenClasses.size() % 2 == 0) return false;

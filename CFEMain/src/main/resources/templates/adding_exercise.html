@@ -7,8 +7,8 @@
 <body>
     <form id="exerciseForm" action="/admin/ex/add" method="post">
         <input type="hidden" name="json">
-        <p th:text="|Задача ${exAmount}|"></p>
-        <input id="exId" type="hidden" th:value="|${exAmount}|" name="id">
+        <p th:text="|Задача ${exId}|"></p>
+        <input id="exId" type="hidden" th:value="|${exId}|" name="id">
         <label>Описание <input id="exTitle" type="text" name="title"></label>
         <fieldset>
             <legend>Входные переменные

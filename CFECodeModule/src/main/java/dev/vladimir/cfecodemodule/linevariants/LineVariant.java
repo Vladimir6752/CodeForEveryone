@@ -12,13 +12,13 @@ public abstract class LineVariant {
     protected LineAction currentLineAction;
     protected AbstractCalculatedValue calculatedValue;
 
-    public LineVariant(CommonScope commonScope, List<? extends Token> lineTokens, AbstractCalculatedValue calculatedValue) {
+    protected LineVariant(CommonScope commonScope, List<? extends Token> lineTokens, AbstractCalculatedValue calculatedValue) {
         this.lineTokens = lineTokens;
         this.commonScope = commonScope;
         this.calculatedValue = calculatedValue;
     }
 
-    public LineVariant() {}
+    protected LineVariant() {}
 
     public abstract boolean isEqualsFor(List<Class<? extends Token>> inputTokenClasses);
 

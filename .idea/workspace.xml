@@ -4,25 +4,61 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="214176b2-19e0-4c4d-8fbd-07ed8cd38b42" name="Changes" comment="Commit unversioned files">
-      <change afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/user/models/ArrayJsonConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CFEMain/src/main/resources/static/js/dynamicArray.js" afterDir="false" />
+    <list default="true" id="214176b2-19e0-4c4d-8fbd-07ed8cd38b42" name="Changes" comment="New functions on site">
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/exercise/ExerciseJsonHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/test/java/dev/vladimir/cfemain/controllers/AdminControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/test/java/dev/vladimir/cfemain/controllers/AuthControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/test/java/dev/vladimir/cfemain/controllers/ExerciseAddingControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/test/java/dev/vladimir/cfemain/controllers/ExercisesExecutionControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/test/java/dev/vladimir/cfemain/controllers/MainControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/test/java/dev/vladimir/cfemain/controllers/mvc/AdminControllerMvcTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/test/java/dev/vladimir/cfemain/controllers/mvc/AuthControllerMvcTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/test/java/dev/vladimir/cfemain/controllers/mvc/ExerciseAddingControllerMvcTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/test/java/dev/vladimir/cfemain/controllers/mvc/ExercisesExecutionControllerMvcTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/test/java/dev/vladimir/cfemain/controllers/mvc/MainControllerMvcTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/test/java/dev/vladimir/cfemain/exercise/ExerciseJsonHandlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/test/java/dev/vladimir/cfemain/user/service/UserServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CFEMain/src/test/java/dev/vladimir/cfemain/user/validation/UserValidatorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/baseclasses/CFEFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/baseclasses/CFEFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/baseclasses/Exercise.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/baseclasses/Exercise.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/BlockedCodeFragmentHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/BlockedCodeFragmentHeader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/LineVariant.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/linevariants/LineVariant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/PrimitiveOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/PrimitiveOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/bool/PrimitiveBooleanOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/bool/PrimitiveBooleanOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/integer/IntegerDivisionOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/integer/IntegerDivisionOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/integer/IntegerMinusOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/integer/IntegerMinusOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/integer/IntegerMultiplierOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/integer/IntegerMultiplierOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/integer/IntegerPlusOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/integer/IntegerPlusOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/integer/PrimitiveIntegerOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/operators/integer/PrimitiveIntegerOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/parsing/BlockedCodeFragmentsRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/parsing/BlockedCodeFragmentsRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/parsing/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/parsing/Lexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/parsing/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/parsing/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/tokens/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/VariablesScope.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/VariablesScope.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/calculatedvalue/AbstractCalculatedValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/calculatedvalue/AbstractCalculatedValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/calculatedvalue/CalculatedBooleanValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/calculatedvalue/CalculatedBooleanValue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/calculatedvalue/CalculatedIntegerValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/main/java/dev/vladimir/cfecodemodule/utils/calculatedvalue/CalculatedIntegerValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/parsing/LexerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/parsing/LexerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/parsing/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFECodeModule/src/test/java/dev/vladimir/cfecodemodule/parsing/ParserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFEMain/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/CfeMainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/CfeMainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/config/SetupDataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/config/SetupDataLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/controllers/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/controllers/AuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/controllers/ExerciseAddingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/controllers/ExerciseAddingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/controllers/ExercisesExecutionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/controllers/ExercisesExecutionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/user/models/SimpleUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/user/models/SimpleUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/user/models/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/user/models/UserEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/user/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/user/validation/UserValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/user/validation/UserValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/user/validation/ValidationObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/java/dev/vladimir/cfemain/user/validation/ValidationObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFEMain/src/main/resources/templates/adding_exercise.html" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/resources/templates/adding_exercise.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFEMain/src/main/resources/templates/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/resources/templates/admin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFEMain/src/main/resources/templates/executing_exercise.html" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/resources/templates/executing_exercise.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFEMain/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFEMain/src/main/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/CFEMain/src/main/resources/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFEMain/src/test/java/dev/vladimir/cfemain/CfeMainApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExerciseService/src/main/java/dev/vladimir/exerciseservice/config/ExercisesData.java" beforeDir="false" afterPath="$PROJECT_DIR$/ExerciseService/src/main/java/dev/vladimir/exerciseservice/config/ExercisesData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExerciseService/src/main/java/dev/vladimir/exerciseservice/controllers/ExerciseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ExerciseService/src/main/java/dev/vladimir/exerciseservice/controllers/ExerciseController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exercises.json" beforeDir="false" afterPath="$PROJECT_DIR$/exercises.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,10 +74,10 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="CSS File" />
         <option value="HTML File" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -99,7 +135,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;730489cb01eb0e6fa53fde8cb8775a48&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -137,11 +173,11 @@
       <recent name="dev.vladimir.cfecodemodule.baseclasses" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="dev.vladimir.cfemain.user.validation" />
+      <recent name="dev.vladimir.cfemain.user.service" />
+      <recent name="dev.vladimir.cfemain.exercise" />
+      <recent name="dev.vladimir.cfemain.controllers" />
       <recent name="dev.vladimir.cfecodemodule.linevariants" />
-      <recent name="dev.vladimir.cfecodemodule.baseclasses" />
-      <recent name="dev.vladimir.cfecodemodule.utils.arrays" />
-      <recent name="dev.vladimir.cfecodemodule.utils" />
-      <recent name="dev.vladimir.cfecodemodule.parsing" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="dev.vladimir.cfemain.feign" />
@@ -154,21 +190,8 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All tests">
-    <configuration name="CFEFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dev.vladimir.cfecodemodule.baseclasses.CFEFile" />
-      <module name="CFECodeModule" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="dev.vladimir.cfecodemodule.baseclasses.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All tests" type="JUnit" factoryName="JUnit">
+  <component name="RunManager" selected="JUnit.CFEMain tests">
+    <configuration name="CFECodeModule tests" type="JUnit" factoryName="JUnit">
       <module name="CFECodeModule" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="" />
@@ -179,54 +202,98 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CFEFileTest.test_blocked_statements" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CFECodeModule" />
+    <configuration name="CFEMain tests" type="JUnit" factoryName="JUnit">
+      <module name="CFEMain" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CFEMain" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dev.vladimir.cfecodemodule.baseclasses.*" />
+          <option name="PATTERN" value="dev.vladimir.cfemain.user.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="dev.vladimir.cfecodemodule.baseclasses" />
-      <option name="MAIN_CLASS_NAME" value="dev.vladimir.cfecodemodule.baseclasses.CFEFileTest" />
-      <option name="METHOD_NAME" value="test_blocked_statements" />
+      <option name="PACKAGE_NAME" value="dev.vladimir.cfemain.user.service" />
+      <option name="MAIN_CLASS_NAME" value="dev.vladimir.cfemain.user.service.UserServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTest.deleteSolvedExerciseIdFromUsers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CFEMain" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dev.vladimir.cfemain.user.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dev.vladimir.cfemain.user.service" />
+      <option name="MAIN_CLASS_NAME" value="dev.vladimir.cfemain.user.service.UserServiceTest" />
+      <option name="METHOD_NAME" value="deleteSolvedExerciseIdFromUsers" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CFEFileTest.testing_blocked_statements_more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CFECodeModule" />
+    <configuration name="UserServiceTest.loadUserByUsername" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CFEMain" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dev.vladimir.cfecodemodule.baseclasses.*" />
+          <option name="PATTERN" value="dev.vladimir.cfemain.user.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="dev.vladimir.cfecodemodule.baseclasses" />
-      <option name="MAIN_CLASS_NAME" value="dev.vladimir.cfecodemodule.baseclasses.CFEFileTest" />
-      <option name="METHOD_NAME" value="testing_blocked_statements_more" />
+      <option name="PACKAGE_NAME" value="dev.vladimir.cfemain.user.service" />
+      <option name="MAIN_CLASS_NAME" value="dev.vladimir.cfemain.user.service.UserServiceTest" />
+      <option name="METHOD_NAME" value="loadUserByUsername" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Java Scratch" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <option name="SCRATCH_FILE_URL" value="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.java" />
+    <configuration name="UserServiceTest.validateNewUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CFEMain" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dev.vladimir.cfemain.user.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dev.vladimir.cfemain.user.service" />
+      <option name="MAIN_CLASS_NAME" value="dev.vladimir.cfemain.user.service.UserServiceTest" />
+      <option name="METHOD_NAME" value="validateNewUser" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CfeMainApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+    <configuration name="UserValidatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CFEMain" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dev.vladimir.cfemain.user.validation.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dev.vladimir.cfemain.user.validation" />
+      <option name="MAIN_CLASS_NAME" value="dev.vladimir.cfemain.user.validation.UserValidatorTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CfeMainApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="CFEMain" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="dev.vladimir.cfemain.CfeMainApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="dev.vladimir.cfemain.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -246,22 +313,24 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.CFEFile" />
-      <item itemvalue="Java Scratch.Main" />
-      <item itemvalue="JUnit.All tests" />
-      <item itemvalue="JUnit.CFEFileTest.testing_blocked_statements_more" />
-      <item itemvalue="JUnit.CFEFileTest.test_blocked_statements" />
+      <item itemvalue="JUnit.CFECodeModule tests" />
+      <item itemvalue="JUnit.CFEMain tests" />
+      <item itemvalue="JUnit.UserServiceTest.deleteSolvedExerciseIdFromUsers" />
+      <item itemvalue="JUnit.UserValidatorTest" />
+      <item itemvalue="JUnit.UserServiceTest" />
+      <item itemvalue="JUnit.UserServiceTest.loadUserByUsername" />
+      <item itemvalue="JUnit.UserServiceTest.validateNewUser" />
+      <item itemvalue="Spring Boot.CfeMainApplication" />
       <item itemvalue="Spring Boot.ExerciseServiceApplication" />
       <item itemvalue="Spring Boot.CodeServiceApplication" />
-      <item itemvalue="Spring Boot.CfeMainApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.CfeMainApplication" />
-        <item itemvalue="Java Scratch.Main" />
-        <item itemvalue="Application.CFEFile" />
-        <item itemvalue="JUnit.CFEFileTest.testing_blocked_statements_more" />
-        <item itemvalue="JUnit.CFEFileTest.test_blocked_statements" />
+        <item itemvalue="JUnit.UserValidatorTest" />
+        <item itemvalue="JUnit.UserServiceTest.deleteSolvedExerciseIdFromUsers" />
+        <item itemvalue="JUnit.UserServiceTest" />
+        <item itemvalue="JUnit.UserServiceTest.loadUserByUsername" />
+        <item itemvalue="JUnit.UserServiceTest.validateNewUser" />
       </list>
     </recent_temporary>
   </component>
@@ -334,7 +403,15 @@
       <workItem from="1680444715929" duration="554000" />
       <workItem from="1680488818978" duration="7558000" />
       <workItem from="1680536192991" duration="2053000" />
-      <workItem from="1680577533510" duration="5013000" />
+      <workItem from="1680577533510" duration="5236000" />
+      <workItem from="1680624309736" duration="390000" />
+      <workItem from="1680624726451" duration="1909000" />
+      <workItem from="1680663302877" duration="3854000" />
+      <workItem from="1680838543692" duration="1943000" />
+      <workItem from="1680875523233" duration="10142000" />
+      <workItem from="1680946909479" duration="16752000" />
+      <workItem from="1681011021665" duration="2622000" />
+      <workItem from="1681047432267" duration="2461000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1678794148683</created>
@@ -392,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680354316203</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="New functions on site">
+      <created>1680582603886</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1680582603886</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,7 +512,8 @@
     <MESSAGE value="If-While integration, refactoring, testing" />
     <MESSAGE value="Web services integration, refactoring, testing" />
     <MESSAGE value="Commit unversioned files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit unversioned files" />
+    <MESSAGE value="New functions on site" />
+    <option name="LAST_COMMIT_MESSAGE" value="New functions on site" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -456,6 +541,10 @@
     <SUITE FILE_PATH="coverage/CodeForEveryoneServer$VariablesScopeTest.ic" NAME="VariablesScopeTest Coverage Results" MODIFIED="1678609764897" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>dev.vladimir.cfecodemodule.utils.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/CodeForEveryoneServer$CFEMain_tests.ic" NAME="CFEMain tests Coverage Results" MODIFIED="1681049539303" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/CodeForEveryoneServer$MainControllerTest.ic" NAME="MainControllerTest Coverage Results" MODIFIED="1680880486057" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>dev.vladimir.cfemain.controllers.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/CodeForEveryoneServer$LexerTest_analyze_return_compatible_tokens.ic" NAME="LexerTest.analyze_return_compatible_tokens Coverage Results" MODIFIED="1678607813126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>dev.vladimir.cfecodemodule.parsing.*</FILTER>
     </SUITE>
@@ -478,5 +567,8 @@
       <FILTER>dev.vladimir.cfecodemodule.baseclasses.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/CodeForEveryoneServer$All_tests.ic" NAME="All tests Coverage Results" MODIFIED="1679827573976" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/CodeForEveryoneServer$ExerciseJsonHandlerTest.ic" NAME="ExerciseJsonHandlerTest Coverage Results" MODIFIED="1680967120549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>dev.vladimir.cfemain.exercise.*</FILTER>
+    </SUITE>
   </component>
 </project>

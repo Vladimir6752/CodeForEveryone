@@ -2,29 +2,33 @@ package dev.vladimir.exerciseservice.controllers;
 
 import dev.vladimir.cfecodemodule.baseclasses.Exercise;
 import dev.vladimir.exerciseservice.config.ExercisesData;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/exercise")
+@RequiredArgsConstructor
 public class ExerciseController {
+    private final ExercisesData exercisesData;
+
     @GetMapping("/get-all")
     public List<Exercise> getAllExercises() {
-        return ExercisesData.allExercises;
+        return exercisesData.getAllExercises();
     }
 
     @GetMapping("/get")
     public Exercise getById(@RequestParam Integer exId) {
-        return ExercisesData
-                .allExercises
+        return exercisesData
+                .getAllExercises()
                 .stream()
                 .filter(exercise -> exercise.getId() == exId)
                 .findFirst()
                 .orElse(
                         new Exercise(
-                                ExercisesData.allExercises.size(),
+                                exercisesData.getAllExercises().size(),
                                 "Что то пошло не так, сообщите администратору сайта"
                         )
                 );
@@ -32,17 +36,15 @@ public class ExerciseController {
 
     @PostMapping("/add")
     public void addExercise(@RequestBody Exercise exercise) {
-        ExercisesData.addExercise(exercise);
+        exercisesData.addExercise(exercise);
     }
 
     @PostMapping("/delete")
-    public void deleteWhereId(@RequestParam Integer exId) {
-        ExercisesData.allExercises = ExercisesData
-                .allExercises
-                .stream()
-                .filter(exercise -> exercise.getId() != exId)
-                .collect(Collectors.toList());
+    public void deleteById(@RequestParam Integer exId) {
+        exercisesData
+                .getAllExercises()
+                .removeIf(exercise -> Objects.equals(exercise.getId(), exId));
 
-        ExercisesData.rewriteExercises();
+        exercisesData.rewriteExercisesInFile();
     }
 }

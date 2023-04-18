@@ -14,8 +14,8 @@ import java.util.Set;
 @Component
 @RequiredArgsConstructor
 public class SetupDataLoader implements ApplicationListener<ContextRefreshedEvent> {
-    private final String ADMIN_NAME = "ADMIN";
-    private final String ADMIN_PASSWORD = "PASS";
+    private static final String ADMIN_NAME = "ADMIN";
+    private static final String ADMIN_PASSWORD = "PASS";
     private final UserRepo userRepo;
 
     @Override

@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Parser {
-    private final List<List<? extends Token>> tokenizeLines;
+    private final List<List<Token>> tokenizeLines;
     private final CommonScope commonScope;
     private final List<LineVariant> resultLines = new ArrayList<>();
     private final List<Class<? extends LineVariant>> variantsTokenLines = List.of(
@@ -29,7 +29,7 @@ public class Parser {
             CloseCurlyBraceLineVariant.class
     );
 
-    public Parser(List<List<? extends Token>> tokenizeLines, CommonScope commonScope) {
+    public Parser(List<List<Token>> tokenizeLines, CommonScope commonScope) {
         this.tokenizeLines = tokenizeLines;
         this.commonScope = commonScope;
     }
@@ -54,7 +54,6 @@ public class Parser {
             }
 
             if (newInstance.isEqualsFor(inputTokenClasses)) {
-                //newInstance.makeAction();
                 resultLines.add(newInstance);
                 return;
             }
@@ -62,7 +61,7 @@ public class Parser {
 
         throw new IllegalStateException(
                 String.format(
-                    "error parse, no statement on line %s with tokens \n %s", lineTokens.get(0).getLine(),
+                    "error parse, no statement on line %s with tokens %n %s", lineTokens.get(0).getLine(),
                     Arrays.toString(lineTokens.toArray())
                 )
         );

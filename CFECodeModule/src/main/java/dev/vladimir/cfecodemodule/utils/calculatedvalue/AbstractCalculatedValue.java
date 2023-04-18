@@ -15,16 +15,16 @@ import dev.vladimir.cfecodemodule.utils.arrays.ArrayTokensHandler;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractCalculatedValue {
-    public abstract boolean isCorrectValueFor(List<Class<? extends Token>> valueTokenClasses);
+public interface AbstractCalculatedValue {
+    boolean isCorrectValueFor(List<Class<? extends Token>> valueTokenClasses);
 
-    public abstract Object calculateTokens(List<? extends Token> inputTokens);
-    public Object calculateTokens(List<? extends Token> inputTokens, CommonScope commonScope) {
+    Object calculateTokens(List<? extends Token> inputTokens);
+    default Object calculateTokens(List<? extends Token> inputTokens, CommonScope commonScope) {
         inputTokens = setValuesInsteadStatements(inputTokens, commonScope);
         return calculateTokens(inputTokens);
     }
 
-    public List<? extends Token> setValuesInsteadStatements(List<? extends Token> lineTokens, CommonScope commonScope) {
+    default List<Token> setValuesInsteadStatements(List<? extends Token> lineTokens, CommonScope commonScope) {
         List<Token> result = new ArrayList<>();
 
         for (Token token : lineTokens) {
@@ -74,5 +74,5 @@ public abstract class AbstractCalculatedValue {
         return token instanceof PrimitiveArrayOperationToken;
     }
 
-    public abstract String getType();
+    String getType();
 }

@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
@@ -46,5 +48,20 @@ public class UserService implements UserDetailsService {
             );
 
         return user;
+    }
+
+    public void deleteSolvedExerciseIdFromUsers(Integer exId) {
+        long i = 1;
+        while(userRepo.existsById(i)) {
+            UserEntity user = userRepo.getById(i);
+
+            boolean wasDeletion = user
+                    .getSolvedExercisesId()
+                    .removeIf(integer -> Objects.equals(integer, exId));
+            if(wasDeletion) {
+                userRepo.save(user);
+            }
+            i++;
+        }
     }
 }

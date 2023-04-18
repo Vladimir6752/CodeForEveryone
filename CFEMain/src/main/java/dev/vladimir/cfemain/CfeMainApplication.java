@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.cloud.openfeign.FeignAutoConfiguration;
 
 @SpringBootApplication
-@EnableFeignClients("dev.vladimir")
+@EnableFeignClients
 @ImportAutoConfiguration({FeignAutoConfiguration.class})
 public class CfeMainApplication {
     public static void main(String[] args) {

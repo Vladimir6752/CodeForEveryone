@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class ParserTest {
     @Test
     void parsing_incompatible_tokens_throw_IllegalStateException() {
-        List<List<? extends Token>> inputTokenizeLines = List.of(
+        List<List<Token>> inputTokenizeLines = List.of(
                 List.of(new IntegerTypeToken(), new VariableNameToken(), new IntegerValueToken(10), new AssignmentToken(), new IntegerValueToken(10), new PlusOperatorToken())
         );
 
@@ -41,7 +41,7 @@ class ParserTest {
 
         assertEquals(
                 String.format(
-                        "error parse, no statement on line 1 with tokens \n %s",
+                        "error parse, no statement on line 1 with tokens %n %s",
                         Arrays.toString(inputTokenizeLines.get(0).toArray())
                 ),
                 illegalStateException.getMessage()
@@ -53,7 +53,7 @@ class ParserTest {
         CommonScope commonScope = new CommonScope();
 
         Variable expectedVariable = new Variable("someName", "Число", String.valueOf(0));
-        List<List<? extends Token>> inputTokenizeLines = List.of(
+        List<List<Token>> inputTokenizeLines = List.of(
                 // Число someName ;
                 List.of(
                         new IntegerTypeToken(),
@@ -88,7 +88,7 @@ class ParserTest {
         commonScope.getVariablesScope().setVariableInScope(
                 new Variable("someExistingVariable", "Число", String.valueOf(10))
         );
-        List<List<? extends Token>> inputTokenizeLines = List.of(
+        List<List<Token>> inputTokenizeLines = List.of(
                 List.of(
                         new IntegerTypeToken(),
                         new VariableNameToken(expectedVariable.name()),
@@ -127,7 +127,7 @@ class ParserTest {
         commonScope.getVariablesScope().setVariableInScope(
                 new Variable("someExistingVariable", "Число", String.valueOf(10))
         );
-        List<List<? extends Token>> inputTokenizeLines = List.of(
+        List<List<Token>> inputTokenizeLines = List.of(
                 List.of(
                         new IntegerTypeToken(),
                         new VariableNameToken(expectedVariable.name()),
@@ -163,7 +163,7 @@ class ParserTest {
         commonScope.getVariablesScope().setVariableInScope(
                 new Variable("someExistingVariable", "Число", String.valueOf(10))
         );
-        List<List<? extends Token>> inputTokenizeLines = List.of(
+        List<List<Token>> inputTokenizeLines = List.of(
                 List.of(
                         new IntegerTypeToken(),
                         new VariableNameToken(expectedVariable.name()),
@@ -192,7 +192,7 @@ class ParserTest {
         Variable settingVariable = new Variable("someName", "Число", String.valueOf(0));
         commonScope.getVariablesScope().setVariableInScope(settingVariable);
 
-        List<List<? extends Token>> inputTokenizeLines = List.of(
+        List<List<Token>> inputTokenizeLines = List.of(
                 // someName = 10 ;
                 List.of(
                         new VariableNameToken(settingVariable.name()),
@@ -230,7 +230,7 @@ class ParserTest {
         Variable variable2 = new Variable("someExistVariable2", "Число", String.valueOf(10));
         commonScope.getVariablesScope().setVariableInScope(variable2);
 
-        List<List<? extends Token>> inputTokenizeLines = List.of(
+        List<List<Token>> inputTokenizeLines = List.of(
                 // someName = someExistVariable1 + someExistVariable2 + 10 ;
                 List.of(
                         new VariableNameToken(settingVariable.name()),
@@ -263,7 +263,7 @@ class ParserTest {
 
     @Test
     void settingVariableValue_throwIllegalStateException_if_variable_is_null() {
-        List<List<? extends Token>> inputTokenizeLines = List.of(
+        List<List<Token>> inputTokenizeLines = List.of(
                 // someNotExistVariableName = 10 ;
                 List.of(
                         new VariableNameToken("someNotExistVariableName"),
@@ -337,7 +337,7 @@ class ParserTest {
     void array_statements_correctly_work() {
         CommonScope commonScope = new CommonScope();
 
-        List<List<? extends Token>> beginningTokens = List.of(
+        List<List<Token>> beginningTokens = List.of(
                 List.of(
                         new IntegerTypeToken(),
                         new VariableNameToken("intIndex"),
@@ -397,7 +397,7 @@ class ParserTest {
                 commonScope.getVariablesScope().getVariable("someResult").value()
         );
 
-        List<List<? extends Token>> tokens2 = List.of(
+        List<List<Token>> tokens2 = List.of(
                 List.of(
                         new VariableNameToken("someResult"),
                         new AssignmentToken(),

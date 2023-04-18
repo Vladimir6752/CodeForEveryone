@@ -16,7 +16,7 @@ public class AuthController {
     private final UserService userService;
 
     @GetMapping("/reg")
-    public String registration() {
+    public String getRegistrationPage() {
         return "reg";
     }
 

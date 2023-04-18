@@ -3,30 +3,29 @@ package dev.vladimir.exerciseservice.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import dev.vladimir.cfecodemodule.baseclasses.Exercise;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
  * Legacy code for reading-writing exercises data in json
  */
 @Component
+@RequiredArgsConstructor
 public class ExercisesData {
-    private static ObjectMapper mapper;
-    public static List<Exercise> allExercises = new ArrayList<>();
-    private static final String fileName = "exercises.json";
+    private final ObjectMapper mapper;
+    private List<Exercise> allExercises = new ArrayList<>();
+    private static final String FILE_NAME = "exercises.json";
 
-    public ExercisesData(ObjectMapper mapper1) {
-        mapper = mapper1;
-    }
-
-    public static boolean initExercises() {
+    public boolean initExercises() {
         String resultJson;
 
-        try(BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+        try(BufferedReader br = new BufferedReader(new FileReader(FILE_NAME))) {
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
             while (line != null) {
@@ -48,35 +47,41 @@ public class ExercisesData {
         return readJsonInAllExercises(resultJson);
     }
 
-    private static boolean readJsonInAllExercises(String json) {
+    private boolean readJsonInAllExercises(String json) {
         try {
             TypeFactory typeFactory = mapper.getTypeFactory();
             allExercises = mapper.readValue(json, typeFactory.constructCollectionType(List.class, Exercise.class));
+
+            allExercises.sort(Comparator.comparing(Exercise::getId));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
         return true;
     }
 
-    private static void writeStringOnFile(String s) {
-        try (PrintWriter writer = new PrintWriter(fileName, StandardCharsets.UTF_8)) {
+    private void writeStringOnFile(String s) {
+        try (PrintWriter writer = new PrintWriter(FILE_NAME, StandardCharsets.UTF_8)) {
             writer.write(s);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static void rewriteExercises() {
+    public void rewriteExercisesInFile() {
         try {
-            mapper.writeValue(new File(fileName), allExercises);
+            mapper.writeValue(new File(FILE_NAME), allExercises);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static void addExercise(Exercise exercise)  {
+    public void addExercise(Exercise exercise)  {
         allExercises.add(exercise);
-        rewriteExercises();
+        rewriteExercisesInFile();
+    }
+
+    public List<Exercise> getAllExercises() {
+        return allExercises;
     }
 }
 

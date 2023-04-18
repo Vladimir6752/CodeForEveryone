@@ -3,7 +3,7 @@ package dev.vladimir.cfecodemodule.operators.bool;
 import dev.vladimir.cfecodemodule.operators.PrimitiveOperator;
 import dev.vladimir.cfecodemodule.tokens.Token;
 
-public abstract class PrimitiveBooleanOperator extends PrimitiveOperator {
+public abstract class PrimitiveBooleanOperator implements PrimitiveOperator {
     public abstract String operate(Token... tokens);
 
     protected boolean getBooleanFromString(String value) {

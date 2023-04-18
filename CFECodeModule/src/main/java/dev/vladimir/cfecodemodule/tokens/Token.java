@@ -9,7 +9,7 @@ public abstract class Token {
     private String value;
     private int line = 1;
 
-    public Token(String[] regex, String name, String value) {
+    protected Token(String[] regex, String name, String value) {
         this.regex = regex;
         this.name = name;
         this.value = value;

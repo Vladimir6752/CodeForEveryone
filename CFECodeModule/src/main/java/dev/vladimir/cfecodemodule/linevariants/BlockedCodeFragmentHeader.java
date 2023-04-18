@@ -11,11 +11,11 @@ public abstract class BlockedCodeFragmentHeader extends LineVariant {
     protected final List<LineVariant> inlineCodeLines = new ArrayList<>();
     protected final List<String> createdVariablesInCycle = new ArrayList<>();
 
-    public BlockedCodeFragmentHeader(CommonScope commonScope, List<? extends Token> lineTokens, AbstractCalculatedValue calculatedValue) {
+    protected BlockedCodeFragmentHeader(CommonScope commonScope, List<? extends Token> lineTokens, AbstractCalculatedValue calculatedValue) {
         super(commonScope, lineTokens, calculatedValue);
     }
 
-    public BlockedCodeFragmentHeader() {
+    protected BlockedCodeFragmentHeader() {
         super();
     }
 

@@ -39,7 +39,7 @@ public class CFEFile {
 
     private void run(String script) {
         try {
-            List<List<? extends Token>> tokenizeLines = new Lexer(script).analyze();
+            List<List<Token>> tokenizeLines = new Lexer(script).analyze();
 
             new Parser(tokenizeLines, commonScope).beginParse();
         } catch (Exception e) {

@@ -3,35 +3,34 @@ package dev.vladimir.cfecodemodule.utils;
 import java.util.*;
 
 public class VariablesScope {
-    private final Map<String, Variable> variablesScope = new HashMap<>();
-
+    private final Map<String, Variable> variablesMap = new HashMap<>();
     private List<String> lastAddedVariables;
-    public boolean isBlockedCodeMode = false;
+    private boolean isBlockedCodeMode = false;
 
     public void setVariableInScope(Variable variable) {
         String variableName = variable.name();
 
-        if(variablesScope.containsKey(variableName)) {
-            Variable foundedVariable = variablesScope.get(variableName);
+        if(variablesMap.containsKey(variableName)) {
+            Variable foundedVariable = variablesMap.get(variableName);
             if(!variable.type().equals(foundedVariable.type()))
                 throw new IllegalStateException(
                         String.format("Incompatible type when setting the value of a variable %s", variableName)
                 );
         } else if(isBlockedCodeMode) lastAddedVariables.add(variable.name());
 
-        variablesScope.put(variableName, variable);
+        variablesMap.put(variableName, variable);
     }
 
     public Variable getVariable(String variableName) {
-        return variablesScope.get(variableName);
+        return variablesMap.get(variableName);
     }
 
     public Set<Map.Entry<String, Variable>> getAllVariableEntry() {
-        return variablesScope.entrySet();
+        return variablesMap.entrySet();
     }
 
     public void clearScope() {
-        variablesScope.clear();
+        variablesMap.clear();
     }
 
     public static void throwIfVariableIsNull(Variable variable, String variableName, int line) {
@@ -59,7 +58,7 @@ public class VariablesScope {
 
     public void endBlockedModeAndRemoveVariables(List<String> createdVariablesInCycle) {
         for (String variableName : createdVariablesInCycle) {
-            variablesScope.remove(variableName);
+            variablesMap.remove(variableName);
         }
         lastAddedVariables = null;
         isBlockedCodeMode = false;
