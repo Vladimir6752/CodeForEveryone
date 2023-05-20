@@ -1,4 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+
 * {
-    font-size: 22px;
-    font-family: Arial,serif;
+    font-family: 'Wix Madefor Display';
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Текстовое поле */
+#code {
+    width: 100%;
+    height: 150px;
+    padding: 5px;
+    margin: 0 15px;
+    border: 1.5px solid #b8b8b8;
+    border-radius: 5px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Кнопка */
+input[type="submit"] {
+    padding: 8px 12px;
+    background-color: #0066cc;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Консоль */
+#console {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    white-space: pre-line;
+    font-family: 'JetBrains Mono';
+}
+
+.center {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    p, h1, input, textarea, span {
+        font-size: calc(100vw * 0.05);
+    }
+}
+
+@media (max-width: 769px) {
+    p, h1, input, textarea, span {
+        font-size: calc(100vw * 0.03);
+        color: lightgreen;
+    }
+}
+
+#header {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: baseline;
+    justify-content: space-evenly;
 }

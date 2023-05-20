@@ -48,7 +48,7 @@ public class CFEFile {
     }
 
     private static String getScript() {
-        try(BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\disne\\Desktop\\CodeForEveryoneServer\\CFECodeModule\\sample.txt"))) {
+        try(BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\disne\\Desktop\\Dev\\CodeForEveryoneServer\\CFECodeModule\\sample.txt"))) {
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
             while (line != null) {

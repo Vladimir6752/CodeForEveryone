@@ -1,21 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org" style="height: 100%">
 <head>
+<!--    <link rel="stylesheet" type="text/css" href="../static/css/main.css"/>-->
     <title>Войти</title>
     <link media="all" type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
 </head>
-<body>
-    <h2>Войти</h2>
-    <div th:if="${param.error}">
-        Неправильное имя или пароль.
+<body style="height: 100%">
+    <div class="center">
+        <div>
+            <h1>Войти</h1>
+            <div th:if="${param.error}">
+                <p style="background-color: red; padding: 10px 15px; border-radius: 15px">Неправильное имя или пароль.</p>
+            </div>
+            <div th:if="${param.logout}">
+                <p style="background-color: deepskyblue; padding: 10px 15px; border-radius: 15px">Вы вышли из аккаунта.</p>
+            </div>
+            <form th:action="@{/login}" method="post">
+                <p><label>Имя : <input type="text" name="username"/> </label></p>
+                <p><label>Пароль: <input type="password" name="password"/> </label></p>
+                <p><input type="submit" value="Войти"/><a href="/reg">Нет аккаунта?</a></p>
+            </form>
+        </div>
     </div>
-    <div th:if="${param.logout}">
-        Вы вышли из аккаунта.
-    </div>
-    <form th:action="@{/login}" method="post">
-        <p><label>Имя : <input type="text" name="username"/> </label></p>
-        <p><label>Пароль: <input type="password" name="password"/> </label></p>
-        <p><input type="submit" value="Войти"/><a href="/reg">Нет аккаунта?</a></p>
-    </form>
 </body>
 </html>

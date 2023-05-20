@@ -3,6 +3,7 @@ package dev.vladimir.cfemain.controllers;
 import dev.vladimir.cfecodemodule.baseclasses.Exercise;
 import dev.vladimir.cfemain.exercise.ExerciseJsonHandler;
 import dev.vladimir.cfemain.feign.ExerciseServiceFeignClient;
+import dev.vladimir.cfemain.loggerbot.Logger;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,7 @@ public class ExerciseAddingController {
     public String getExercisesAddingPage(Model model) {
         model.addAttribute("exId", exerciseServiceFeignClient.getAllExercises().size() + 1);
 
+        Logger.log("getExercisesAddingPage()");
         return "adding_exercise";
     }
 
@@ -29,6 +31,7 @@ public class ExerciseAddingController {
         Exercise exercise = exerciseJsonHandler.handleExerciseJson(model, json);
 
         if(exercise != null) {
+            Logger.log("addExercise(): " + exercise);
             exerciseServiceFeignClient.addExercise(exercise);
         }
 

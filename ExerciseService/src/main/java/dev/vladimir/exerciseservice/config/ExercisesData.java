@@ -6,6 +6,7 @@ import dev.vladimir.cfecodemodule.baseclasses.Exercise;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -22,7 +23,13 @@ public class ExercisesData {
     private List<Exercise> allExercises = new ArrayList<>();
     private static final String FILE_NAME = "exercises.json";
 
-    public boolean initExercises() {
+    @PostConstruct
+    public void init() {
+        while (!initExercises())
+            initExercises();
+    }
+
+    private boolean initExercises() {
         String resultJson;
 
         try(BufferedReader br = new BufferedReader(new FileReader(FILE_NAME))) {

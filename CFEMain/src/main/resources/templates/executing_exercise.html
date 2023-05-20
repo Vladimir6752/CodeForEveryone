@@ -4,19 +4,26 @@
     <meta charset="UTF-8">
     <title>Выполнить задачу</title>
     <link media="all" type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
+    <script th:src="@{/js/resize.js}"></script>
 </head>
 <body>
-    <h1 th:text="|Задача ${exercise.getId()} ${exercise.getTitle()}|"></h1>
-    <p th:if="${isSolved}">Решена успешно</p>
+    <div id="header">
+        <h1 th:text="|Задача ${exercise.getId()}|"></h1>
+        <p><a href="/">Главная</a></p>
+    </div>
+    <h1 th:text="|${exercise.getTitle()}|"></h1>
+
+    <p th:if="${isSolved}" style="background-color: #75ff7e; padding: 10px 15px; border-radius: 15px">Решена успешно</p>
 
     <form th:action="@{'/ex?exId=' + ${exercise.getId()}}" method="post">
         <p><label for="code">Введите код</label><br></p>
         <p><textarea id="code"
                      name="code"
                      placeholder="Число индекс = 10 ;"
-                     rows="10"
+                     rows="6"
                      cols="50"
-                     th:inline="text">[[${code}]]</textarea><br></p>
+                     th:inline="text"
+                     oninput="autoResize(this)">[[${code}]]</textarea><br></p>
         <p><input type="submit" value="Запустить"></p>
     </form>
 

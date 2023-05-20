@@ -2,20 +2,27 @@
 <html xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css"/>
     <title>Главная</title>
     <link media="all" type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
+    <script th:src="@{/js/resize.js}"></script>
 </head>
 <body>
-    <h1>Привет, <span sec:authentication="name"></span>!</h1>
-    <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Выйти"/>
-    </form>
+    <div id="header">
+        <h1>Привет, <span sec:authentication="name"></span>!</h1>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Выйти"/>
+        </form>
+    </div>
+    <div sec:authorize-url="/admin">
+        <p><a href="/admin">Админ</a></p>
+    </div>
 
     <div>
         <p th:each="exId : ${exerisesId}">
             <a th:href="@{'/ex?exId=' + ${exId}}" th:text="|Решать ${exId}|"></a>
 
-            <span th:if="${user.isSolvedExerciseId(exId)}">Решена</span>
+            <span th:if="${user.isSolvedExerciseId(exId)}" style="background-color: #75ff7e; padding: 10px 15px; border-radius: 15px">Решена</span>
         </p>
     </div>
 
@@ -24,9 +31,10 @@
         <p><textarea id="code"
                      name="code"
                      placeholder="Число индекс = 10 ;"
-                     rows="10"
+                     rows="6"
                      cols="50"
-                     th:inline="text">[[${code}]]</textarea><br></p>
+                     th:inline="text"
+                     oninput="autoResize(this)">[[${code}]]</textarea><br></p>
         <p><input type="submit" value="Запустить"></p>
     </form>
 

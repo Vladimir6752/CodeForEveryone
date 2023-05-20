@@ -5,30 +5,34 @@
     <link media="all" type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
+    <div id="header">
+        <a href="/"><p>Главная</p></a>
+        <a href="/admin"><p>Админ</p></a>
+    </div>
     <form id="exerciseForm" action="/admin/ex/add" method="post">
         <input type="hidden" name="json">
         <p th:text="|Задача ${exId}|"></p>
         <input id="exId" type="hidden" th:value="|${exId}|" name="id">
-        <label>Описание <input id="exTitle" type="text" name="title"></label>
+        <p><label>Описание <input id="exTitle" type="text" name="title"></label></p>
         <fieldset>
-            <legend>Входные переменные
-                <label for="rows">Строк:</label>
+            <legend><p>Входные переменные</p>
+                <label for="rows"><p>Строк:</p></label>
                 <input type="number" id="rows" name="rows" min="1" max="10" required>
-                <label for="cols">Столбцов:</label>
+                <label for="cols"><p>Столбцов:</p></label>
                 <input type="number" id="cols" name="cols" min="1" max="10" required>
             </legend>
 
-            <button type="button" id="create-btn">Создать</button>
+            <button type="button" id="create-btn"><p>Создать</p></button>
             <table id="array-table"></table>
         </fieldset>
 
         <fieldset>
-            <legend>Выход <input id="add_out" type="button" value="Добавить выход"></legend>
+            <p><legend>Выход <input id="add_out" type="button" value="Добавить выход"></legend></p>
             <div id="out_array_wrapper">
 
             </div>
         </fieldset>
-        <button type="button" id="submit-btn">Подтвердить</button>
+        <button type="button" id="submit-btn"><p>Подтвердить</p></button>
     </form>
 
     <div th:if="${result}">
@@ -42,7 +46,7 @@
             document.getElementById("out_array_wrapper"),
             document.getElementById("add_out"),
             '<input required type="text" name="name" placeholder="Выход">' +
-            '<a href="#" class="remove_field">Удалить</a>\n' +
+            '<p><a href="#" class="remove_field">Удалить</a>\n</p>' +
             '<div class="variables_wrapper"></div>\n',
             function (inputFields, values, i) {
                 values.push(inputFields[i].children[0].value);

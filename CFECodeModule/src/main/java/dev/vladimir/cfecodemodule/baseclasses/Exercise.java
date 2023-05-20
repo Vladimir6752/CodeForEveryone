@@ -3,11 +3,13 @@ package dev.vladimir.cfecodemodule.baseclasses;
 import dev.vladimir.cfecodemodule.utils.Variable;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@ToString
 @NoArgsConstructor
 public class Exercise {
     private int id;
