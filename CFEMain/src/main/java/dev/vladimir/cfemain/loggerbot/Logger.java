@@ -4,7 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Logger {
-    private static final LoggerBot loggerBot = new LoggerBot("6208014440:AAFNXlWH_9RGOsZInkBTGOvFWV1qb-BTZhk");
+    private static final LoggerBot loggerBot = new LoggerBot("someBotId");
     private static final StringBuilder intermediateBuilder = new StringBuilder();
     private static final StringBuilder logBuilder = new StringBuilder();
     static {
